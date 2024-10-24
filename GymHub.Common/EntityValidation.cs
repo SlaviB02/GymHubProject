@@ -43,6 +43,18 @@
             public const int PhoneMaxLength = 15;
         }
 
+        public static class Gym
+        {
+            public const int NameMinLength = 5;
+            public const int NameMaxLength = 40;
+
+            public const int AddressMinLength = 10;
+            public const int AddressMaxLength = 100;
+
+            public const int DescriptionMinLength = 20;
+            public const int DescriptionMaxLength = 400;
+        }
+
 
     }
 }
