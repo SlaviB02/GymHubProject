@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using GymHub.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,11 @@ namespace GymHub.Data
         public GymHubDbContext(DbContextOptions<GymHubDbContext> options)
             : base(options)
         {
+
         }
+
+        public DbSet<Trainer> Trainers { get; set; } = null!;
+
+        public DbSet<Equipment> Equipments { get; set; } = null!;
     }
 }
