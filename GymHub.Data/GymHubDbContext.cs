@@ -28,5 +28,9 @@ namespace GymHub.Data
         public DbSet<GymEquipment> GymsEquipments { get; set; } = null!;
 
         public DbSet<Class> Classes { get; set; } = null!;
+
+        public DbSet<ClassUser>ClassesUsers { get; set; } = null!;
+
+        public DbSet<Gym> Gyms {  get; set; } = null!;
     }
 }

@@ -54,7 +54,7 @@
             public const int DescriptionMinLength = 20;
             public const int DescriptionMaxLength = 400;
         }
-
+        
 
     }
 }
