@@ -20,5 +20,9 @@ namespace GymHub.Data
         public DbSet<Trainer> Trainers { get; set; } = null!;
 
         public DbSet<Equipment> Equipments { get; set; } = null!;
+
+        public DbSet<Review> Reviews { get; set; } = null!;
+
+        public DbSet<Membership> Memberships { get; set; } = null!;
     }
 }
