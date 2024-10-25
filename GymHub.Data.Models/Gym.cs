@@ -36,10 +36,10 @@ namespace GymHub.Data.Models
 
         [Required]
         [Comment("Opening hour of Gym")]
-        public DateTime OpeningHour { get; set; }
+        public int OpeningHour { get; set; }
         [Required]
         [Comment("Closing hour of Gym")]
-        public DateTime ClosingHour { get; set; }
+        public int ClosingHour { get; set; }
 
         public ICollection<GymEquipment> GymsEquipments { get; set; } = new HashSet<GymEquipment>();
 

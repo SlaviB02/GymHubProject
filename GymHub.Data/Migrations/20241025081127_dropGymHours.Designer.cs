@@ -4,6 +4,7 @@ using GymHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymHub.Data.Migrations
 {
     [DbContext(typeof(GymHubDbContext))]
-    partial class GymHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241025081127_dropGymHours")]
+    partial class dropGymHours
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,10 +107,6 @@ namespace GymHub.Data.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasComment("The Address of the Gym");
 
-                    b.Property<int>("ClosingHour")
-                        .HasColumnType("int")
-                        .HasComment("Closing hour of Gym");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(400)
@@ -123,10 +122,6 @@ namespace GymHub.Data.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)")
                         .HasComment("The Name of the Gym");
-
-                    b.Property<int>("OpeningHour")
-                        .HasColumnType("int")
-                        .HasComment("Opening hour of Gym");
 
                     b.HasKey("Id");
 
