@@ -26,6 +26,9 @@ namespace GymHub.Data.Models
 
         public string Address {  get; set; } = null!;
 
+        [Comment("The ImageUrl of the Gym")]
+        public string? ImageUrl { get; set; }
+
         [Required]
         [StringLength(DescriptionMaxLength)]
         [Comment("Description of the gym")]

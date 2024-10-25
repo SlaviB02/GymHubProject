@@ -36,6 +36,9 @@ namespace GymHub.Data.Models
         [Comment("Email of Trainer")]
         public string Email { get; set; } = null!;
 
+        [Comment("The ImageUrl of the Trainer")]
+        public string? ImageUrl { get; set; }
+
         [Required]
         [Comment("The unique identifier of the Gym that the trainer is in")]
         public Guid GymId { get; set; }

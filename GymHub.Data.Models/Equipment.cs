@@ -21,6 +21,9 @@ namespace GymHub.Data.Models
         [Comment("The model of the equipment")]
         public string Model { get; set; } = null!;
 
+        [Comment("The ImageUrl of the Equipment")]
+        public string? ImageUrl { get; set; }
+
         [Required]
         [Comment("The type of equipment")]
         public EquipmentType Type { get; set; }
