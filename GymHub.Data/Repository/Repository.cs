@@ -46,7 +46,7 @@ namespace GymHub.Data.Repository
 
         public IQueryable<T> GetAllAttached()
         {
-            return dbSet.AsQueryable();
+            return dbSet;
         }
 
         public async Task<T> GetByIdAsync(Guid id)
