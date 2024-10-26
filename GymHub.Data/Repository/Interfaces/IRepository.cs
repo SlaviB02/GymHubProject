@@ -12,7 +12,7 @@ namespace GymHub.Data.Repository.Interfaces
 
         Task<T> GetByIdAsync(Guid id);
 
-        IEnumerable<T> GetAllAttached();
+        IQueryable<T> GetAllAttached();
 
         Task AddAsync(T entity);
 

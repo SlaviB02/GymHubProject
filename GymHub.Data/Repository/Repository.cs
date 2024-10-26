@@ -44,14 +44,16 @@ namespace GymHub.Data.Repository
             return  await dbSet.ToListAsync();
         }
 
-        public IEnumerable<T> GetAllAttached()
+        public IQueryable<T> GetAllAttached()
         {
             return dbSet.AsQueryable();
         }
 
         public async Task<T> GetByIdAsync(Guid id)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return await dbSet.FindAsync(id);
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
       

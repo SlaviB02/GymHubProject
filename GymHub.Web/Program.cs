@@ -1,4 +1,9 @@
 using GymHub.Data;
+using GymHub.Data.Models;
+using GymHub.Data.Repository;
+using GymHub.Data.Repository.Interfaces;
+using GymHub.Services.Data;
+using GymHub.Services.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +17,14 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<GymHubDbContext>();
+
+builder.Services.AddScoped<IRepository<Gym>, Repository<Gym>>();
+builder.Services.AddScoped<IGymService, GymService>();
+
 builder.Services.AddControllersWithViews();
+
+
+
 
 var app = builder.Build();
 

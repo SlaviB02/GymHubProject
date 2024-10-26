@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GymHub.Data\GymHub.Data.csproj" />
+    <ProjectReference Include="..\GymHub.Web.ViewModels\GymHub.Web.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>
