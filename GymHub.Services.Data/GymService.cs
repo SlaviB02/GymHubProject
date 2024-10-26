@@ -2,7 +2,7 @@
 using GymHub.Data.Repository;
 using GymHub.Data.Repository.Interfaces;
 using GymHub.Services.Data.Interfaces;
-using GymHub.Web.ViewModels;
+using GymHub.Web.ViewModels.Gym;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,10 +31,38 @@ namespace GymHub.Services.Data
                     ImageUrl = e.ImageUrl,
                     OpeningHour = e.OpeningHour,
                     ClosingHour = e.ClosingHour,
+                    Id = e.Id,
                 })
                 .ToListAsync();
 
             return gyms;
+        }
+
+        public async Task<GymDetailsViewModel> GetDetailsGymAsync(Guid id)
+        {
+           
+            GymDetailsViewModel? model = null;
+
+            Gym? gym= await context.GetByIdAsync(id);
+
+            if(gym!=null)
+            {
+                model = new GymDetailsViewModel
+                {
+                    Name = gym.Name,
+                    Address = gym.Address,
+                    Description = gym.Description,
+                    ImageUrl = gym.ImageUrl,
+                    OpeningHour = gym.OpeningHour,
+                    ClosingHour = gym.ClosingHour,
+                };
+            }
+
+
+
+#pragma warning disable CS8603 // Possible null reference return.
+            return model;
+#pragma warning restore CS8603 // Possible null reference return.
         }
     }
 }

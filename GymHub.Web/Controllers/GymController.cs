@@ -18,5 +18,17 @@ namespace GymHub.Web.Controllers
 
             return View(list);
         }
+        public async Task<IActionResult>Details(string id)
+        {
+            bool isValidGuid = Guid.TryParse(id, out Guid guidId);
+            if (!isValidGuid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var model=await service.GetDetailsGymAsync(guidId);
+
+            return View(model);
+        }
     }
 }
