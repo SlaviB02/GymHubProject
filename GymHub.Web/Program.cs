@@ -19,7 +19,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<GymHubDbContext>();
 
 builder.Services.AddScoped<IRepository<Gym>, Repository<Gym>>();
+builder.Services.AddScoped<IRepository<Membership>, Repository<Membership>>();
+
 builder.Services.AddScoped<IGymService, GymService>();
+builder.Services.AddScoped<IMembershipService, MembershipService>();
 
 builder.Services.AddControllersWithViews();
 

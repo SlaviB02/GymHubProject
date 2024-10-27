@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AllMembershipsViewModel>
+
+@{
+    ViewBag.Title = "My Memberships";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var e in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+            <div class="card-body">
+                <h4 class="card-title mt-1">@e.GymName</h4>
+                <h5 class="card-title mt-1">@e.FirstName @e.LastName</h5>
+                <h5 class="card-title mt-1">@e.Type</h5>
+                <p class="mb-0"><span class="fw-bold">Starting Time: </span>@e.StartDate</p>
+            </div>
+
+            
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
