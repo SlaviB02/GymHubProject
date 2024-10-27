@@ -9,6 +9,8 @@ namespace GymHub.Web.ViewModels.Membership
 {
     public class AllMembershipsViewModel
     {
+
+        public Guid Id { get; set; }
         public required string Type { get; set; }
 
         public required string StartDate {  get; set; }

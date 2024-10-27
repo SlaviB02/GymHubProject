@@ -46,6 +46,12 @@ namespace GymHub.Services.Data
               return true;
         }
 
+        public async Task CancelMembershipAsync(Guid Id)
+        { 
+
+            await context.DeleteAsync(Id);
+        }
+
         public async Task<IEnumerable<AllMembershipsViewModel>> GetAllMembershipsAsync(string userId)
         {
            var list= await context
@@ -58,7 +64,7 @@ namespace GymHub.Services.Data
                     GymName=m.Gym.Name,
                     StartDate=m.StartDate.ToString(DateOnlyFormat),
                     Type = m.Type.ToString(),
-                    
+                    Id=m.Id
                 })
                 .ToListAsync();
 

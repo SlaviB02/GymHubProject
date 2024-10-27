@@ -62,6 +62,12 @@ namespace GymHub.Web.Controllers
             return RedirectToAction("Index");
             
         }
+        public async Task<IActionResult>Cancel(Guid id)
+        {
+           await service.CancelMembershipAsync(id);
+
+            return RedirectToAction("Index");
+        }
         private string GetUserId()
         {
             string userId = string.Empty;

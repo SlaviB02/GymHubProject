@@ -19,7 +19,9 @@
                 <p class="mb-0"><span class="fw-bold">Starting Time: </span>@e.StartDate</p>
             </div>
 
-            
+            <form class="input-group-sm " asp-controller="Membership" asp-action="Cancel" asp-route-id="@e.Id">
+                <input type="submit" value="Cancel" class="fs-6 btn btn-warning mb-3 w-100 p-3 fw-bold" />
+            </form>
         </div>
     }
 </div>
