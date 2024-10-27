@@ -12,10 +12,12 @@ namespace GymHub.Web.Controllers
     public class MembershipController : Controller
     {
         private readonly IMembershipService service;
+        private readonly IGymService gymService;
 
-        public MembershipController(IMembershipService _service)
+        public MembershipController(IMembershipService _service, IGymService _gymService)
         {
-            service= _service;
+            service = _service;
+            gymService = _gymService;
         }
         public async Task<IActionResult> Index()
         {
@@ -26,10 +28,11 @@ namespace GymHub.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
             AddMembershipInputModel model = new AddMembershipInputModel();
-            model.Types = service.GetTypesNames().Where(m=>m!="Unknown");
+            model.Types = service.GetTypesNames();
+            model.Gyms = await gymService.GetGymNamesAsync();
             return View(model);
         }
 
@@ -38,7 +41,8 @@ namespace GymHub.Web.Controllers
         {
             if(!ModelState.IsValid)
             {
-                model.Types = service.GetTypesNames().Where(m => m != "Unknown");
+                model.Types = service.GetTypesNames();
+                model.Gyms = await gymService.GetGymNamesAsync();
                 return View(model);
             }
 
@@ -50,7 +54,8 @@ namespace GymHub.Web.Controllers
             {
                 ModelState.AddModelError(nameof(model.StartDate),
                    String.Format("The Release Date must be in the following format: {0}", DateOnlyFormat));
-                model.Types = service.GetTypesNames().Where(m => m != "Unknown");
+                model.Types = service.GetTypesNames();
+                model.Gyms = await gymService.GetGymNamesAsync();
                 return View(model);
             }
 

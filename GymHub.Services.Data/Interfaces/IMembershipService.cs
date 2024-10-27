@@ -15,5 +15,7 @@ namespace GymHub.Services.Data.Interfaces
         Task<bool>AddMembershipAsync(AddMembershipInputModel membership,string userId);
 
         IEnumerable<string> GetTypesNames();
+
+        
     }
 }

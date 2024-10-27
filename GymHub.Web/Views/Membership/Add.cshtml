@@ -42,6 +42,17 @@
                 <span asp-validation-for="@Model.Type" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                <label asp-for="@Model.GymId" class="form-label-add-edit">Select Gym</label>
+                <select asp-for="@Model.GymId" class="form-control" aria-required="true">
+                    <option disabled selected value="">Select Gym....</option>
+                    @foreach (var gym in Model.Gyms!)
+                    {
+                        <option value="@gym.Id">@gym.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.GymId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
                 <input class="btn btn-warning mb-2 w-100 p-3 fw-bold" type="submit" value="Make" />
             </div>
         </form>

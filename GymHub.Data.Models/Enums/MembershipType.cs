@@ -8,8 +8,7 @@ namespace GymHub.Data.Models.Enums
 {
     public enum MembershipType
     {
-        Unknown = 0,
-        Normal,
+        Normal=0,
         Premium,
         Vip
     }

@@ -64,5 +64,17 @@ namespace GymHub.Services.Data
             return model;
 #pragma warning restore CS8603 // Possible null reference return.
         }
+
+        public async Task<IEnumerable<GymNamesViewModel>> GetGymNamesAsync()
+        {
+            var list = await context.GetAllAttached()
+                .Select(g => new GymNamesViewModel()
+                {
+                    Name = g.Name,
+                    Id = g.Id,
+                })
+                .ToListAsync();
+            return list;
+        }
     }
 }

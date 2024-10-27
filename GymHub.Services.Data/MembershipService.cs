@@ -38,8 +38,7 @@ namespace GymHub.Services.Data
                 PhoneNumber = membership.PhoneNumber,
                 StartDate = date,
                 Type = (MembershipType)Enum.Parse(typeof(MembershipType), membership.Type),
-                //GymId = Guid.Parse("A514009C-F2EE-46E9-A3F9-58F4D9221076")
-                GymId=membership.GymId,//TODO
+                GymId=membership.GymId,
             };
 
             await context.AddAsync(m);
@@ -72,5 +71,6 @@ namespace GymHub.Services.Data
 
             return list.Select(m=>m.ToString());
         }
+       
     }
 }
