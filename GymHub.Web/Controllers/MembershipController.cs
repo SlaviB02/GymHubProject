@@ -9,7 +9,7 @@ using static GymHub.Common.ApplicationConstants;
 namespace GymHub.Web.Controllers
 {
     [Authorize]
-    public class MembershipController : Controller
+    public class MembershipController : BaseController
     {
         private readonly IMembershipService service;
         private readonly IGymService gymService;
@@ -68,16 +68,7 @@ namespace GymHub.Web.Controllers
 
             return RedirectToAction("Index");
         }
-        private Guid GetUserId()
-        {
-            Guid userId=Guid.Empty;
-
-            if (User != null)
-            {
-                userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-            }
-            return userId;
-        }
+       
 
         
     }

@@ -30,6 +30,8 @@
                 <h5 class="card-title mt-1">@e.Address</h5>
                 <p class="mb-0" style="height:4em"><span class="fw-bold">Working Hours: </span>@e.OpeningHour h - @e.ClosingHour h</p>
                 <a asp-action="Details" asp-route-id="@e.Id" class="btn btn-primary">Details</a>
+                <a asp-controller="Review" asp-action="Add" asp-route-id="@e.Id" class="btn btn-primary">Leave a Review</a>
+                <a asp-controller="Review" asp-action="ReviewsForGym" asp-route-id="@e.Id" class="btn btn-secondary">Gym Reviews</a>
             </div>
 
            

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GymHub.Web.Controllers
 {
-    public class GymController : Controller
+    public class GymController : BaseController
     {
         private readonly IGymService service;
 

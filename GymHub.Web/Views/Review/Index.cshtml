@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AllReviewViewModel>
+
+@{
+    ViewBag.Title = "Review for Gym";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var e in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+            <div class="card-body">
+                <h3 class="card-title mt-1">@e.Title </h3>
+                <br />
+                <p class="card-title mt-1">@e.Body</p>
+                <br/>
+                <p class="fw-bold"><span class="fw-bold">By: </span>@e.UserName</p>
+                <p class="fw-bold">For: @e.GymName</p>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
