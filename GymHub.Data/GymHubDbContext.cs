@@ -1,4 +1,5 @@
 ﻿using GymHub.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GymHub.Data
 {
-    public class GymHubDbContext : IdentityDbContext
+    public class GymHubDbContext : IdentityDbContext<ApplicationUser,IdentityRole<Guid>,Guid>
     {
         public GymHubDbContext(DbContextOptions<GymHubDbContext> options)
             : base(options)

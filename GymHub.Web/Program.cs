@@ -15,8 +15,25 @@ builder.Services.AddDbContext<GymHubDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<GymHubDbContext>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+})
+    .AddEntityFrameworkStores<GymHubDbContext>()
+    .AddRoles<IdentityRole<Guid>>()
+                .AddSignInManager<SignInManager<ApplicationUser>>()
+                .AddUserManager<UserManager<ApplicationUser>>();
+
+builder.Services.ConfigureApplicationCookie(cfg =>
+{
+    cfg.LoginPath = "/Identity/Account/Login";
+});
+
+
+
 
 builder.Services.AddScoped<IRepository<Gym>, Repository<Gym>>();
 builder.Services.AddScoped<IRepository<Membership>, Repository<Membership>>();
@@ -26,7 +43,7 @@ builder.Services.AddScoped<IMembershipService, MembershipService>();
 
 builder.Services.AddControllersWithViews();
 
-
+builder.Services.AddRazorPages();
 
 
 var app = builder.Build();
@@ -54,6 +71,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();

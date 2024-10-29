@@ -10,9 +10,9 @@ namespace GymHub.Services.Data.Interfaces
 {
     public interface IMembershipService
     {
-        Task<IEnumerable<AllMembershipsViewModel>> GetAllMembershipsAsync(string userId);
+        Task<IEnumerable<AllMembershipsViewModel>> GetAllMembershipsAsync(Guid userId);
 
-        Task<bool>AddMembershipAsync(AddMembershipInputModel membership,string userId);
+        Task<bool>AddMembershipAsync(AddMembershipInputModel membership,Guid userId);
 
         IEnumerable<string> GetTypesNames();
 

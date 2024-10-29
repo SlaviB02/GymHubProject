@@ -21,7 +21,7 @@ namespace GymHub.Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            string userId = GetUserId();
+            Guid userId = GetUserId();
             var memberships = await service.GetAllMembershipsAsync(userId);
            
             return View(memberships);
@@ -46,7 +46,7 @@ namespace GymHub.Web.Controllers
                 return View(model);
             }
 
-            string userId = GetUserId();
+            Guid userId = GetUserId();
 
             bool res = await service.AddMembershipAsync(model,userId);
 
@@ -68,13 +68,13 @@ namespace GymHub.Web.Controllers
 
             return RedirectToAction("Index");
         }
-        private string GetUserId()
+        private Guid GetUserId()
         {
-            string userId = string.Empty;
+            Guid userId=Guid.Empty;
 
             if (User != null)
             {
-                userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             }
             return userId;
         }

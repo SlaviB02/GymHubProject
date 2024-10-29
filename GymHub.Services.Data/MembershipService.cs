@@ -20,7 +20,7 @@ namespace GymHub.Services.Data
             context = _context;
         }
 
-        public async Task<bool> AddMembershipAsync(AddMembershipInputModel membership, string userId)
+        public async Task<bool> AddMembershipAsync(AddMembershipInputModel membership, Guid userId)
         {
             bool isReleaseDateValid = DateTime
               .TryParseExact(membership.StartDate, DateOnlyFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
@@ -52,7 +52,7 @@ namespace GymHub.Services.Data
             await context.DeleteAsync(Id);
         }
 
-        public async Task<IEnumerable<AllMembershipsViewModel>> GetAllMembershipsAsync(string userId)
+        public async Task<IEnumerable<AllMembershipsViewModel>> GetAllMembershipsAsync(Guid userId)
         {
            var list= await context
                 .GetAllAttached()

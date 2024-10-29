@@ -43,10 +43,10 @@ namespace GymHub.Data.Models
 
         [Required]
         [Comment("The unique identifier of the User that made the membership")]
-        public string UserId { get; set; } = null!;
+        public Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public IdentityUser User { get; set; } = null!;
+        public ApplicationUser User { get; set; } = null!;
 
         [Required]
         [Comment("The unique identifier of the Gym for the membership")]
