@@ -15,8 +15,4 @@
     <ProjectReference Include="..\GymHub.Data.Models\GymHub.Data.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

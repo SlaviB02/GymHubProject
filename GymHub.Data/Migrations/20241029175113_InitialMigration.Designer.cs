@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymHub.Data.Migrations
 {
     [DbContext(typeof(GymHubDbContext))]
-    [Migration("20241029165011_E")]
-    partial class E
+    [Migration("20241029175113_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
