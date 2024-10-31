@@ -53,6 +53,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseStatusCodePagesWithReExecute("/Home/Error","?sc={0}");
     app.UseMigrationsEndPoint();
 }
 else
