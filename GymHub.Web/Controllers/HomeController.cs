@@ -24,14 +24,16 @@ namespace GymHub.Web.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error(int sc)
         {
             if(sc==404)
             {
                 return View("NotFound");
             }
-         
+         if(sc==400)
+            {
+                return View("BadRequest");
+            }
             return View();
         }
     }
