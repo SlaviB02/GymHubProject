@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AllReviewViewModel>
 
 @{
-    ViewBag.Title = "Reviews for all Gyms";
+    ViewBag.Title = "Review for Gym";
 }
 
 
@@ -16,9 +16,8 @@
                 <h3 class="card-title mt-1">@e.Title </h3>
                 <br />
                 <p class="card-title mt-1">@e.Body</p>
-                <br/>
+                <br />
                 <p class="fw-bold"><span class="fw-bold">By: </span>@e.UserName</p>
-                <p class="fw-bold">For: @e.GymName</p>
             </div>
         </div>
     }

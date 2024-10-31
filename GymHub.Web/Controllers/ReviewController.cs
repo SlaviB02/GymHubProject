@@ -48,9 +48,9 @@ namespace GymHub.Web.Controllers
         {
             Guid gymId=Guid.Parse(Id);
 
-            var list=await service.GetAllReviesForGymAsync(gymId);
+            var list=await service.GetAllReviewsForGymAsync(gymId);
 
-            return View("Index",list);
+            return View(list);
         }
     }
 }

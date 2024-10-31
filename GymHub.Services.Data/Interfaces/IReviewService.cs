@@ -13,6 +13,6 @@ namespace GymHub.Services.Data.Interfaces
 
         Task<IEnumerable<AllReviewViewModel>>GetAllReviewsAsync();
 
-        Task<IEnumerable<AllReviewViewModel>> GetAllReviesForGymAsync(Guid gymId);
+        Task<IEnumerable<AllReviewViewModel>> GetAllReviewsForGymAsync(Guid gymId);
     }
 }

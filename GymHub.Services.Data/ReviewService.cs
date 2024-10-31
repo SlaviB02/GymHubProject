@@ -36,7 +36,7 @@ namespace GymHub.Services.Data
             return true;
         }
 
-        public async Task<IEnumerable<AllReviewViewModel>> GetAllReviesForGymAsync(Guid gymId)
+        public async Task<IEnumerable<AllReviewViewModel>> GetAllReviewsForGymAsync(Guid gymId)
         {
             var list = await context
                .GetAllAttached()
@@ -46,7 +46,6 @@ namespace GymHub.Services.Data
                    Title = r.Title,
                    Body = r.MainBody,
                    UserName = r.User.UserName!,
-                   GymName = r.Gym.Name,
                })
                .ToListAsync();
 

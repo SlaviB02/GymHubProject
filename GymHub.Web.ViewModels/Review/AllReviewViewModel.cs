@@ -14,7 +14,7 @@ namespace GymHub.Web.ViewModels.Review
 
         public required string UserName {  get; set; }
 
-        public required string GymName { get; set; }
+        public string? GymName { get; set; }
 
     }
 }
