@@ -46,6 +46,7 @@ namespace GymHub.Services.Data
                    Title = r.Title,
                    Body = r.MainBody,
                    UserName = r.User.UserName!,
+                   ReviewId=r.Id
                })
                .ToListAsync();
 
@@ -62,11 +63,17 @@ namespace GymHub.Services.Data
                     Body=r.MainBody,
                     UserName=r.User.UserName!,
                     GymName=r.Gym.Name,
+                    ReviewId=r.Id
                 })
                 .ToListAsync();
 
             return list;
 
+        }
+
+        public async Task DeleteReviewAsync(Guid reviewId)
+        {
+            await context.DeleteByIdAsync(reviewId);  
         }
     }
 }

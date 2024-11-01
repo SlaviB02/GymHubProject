@@ -18,6 +18,10 @@
                 <p class="card-title mt-1">@e.Body</p>
                 <br />
                 <p class="fw-bold"><span class="fw-bold">By: </span>@e.UserName</p>
+                @if (User?.Identity?.Name == @e.UserName)
+                {
+                    <a asp-controller="Review" asp-action="Delete" asp-route-id="@e.ReviewId" class="btn btn-warning btn-dark-text btn-rounded fw-bold">Delete</a>
+                }
             </div>
         </div>
     }

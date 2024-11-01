@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,9 @@ namespace GymHub.Data.Repository
             await context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+      
+
+        public async Task DeleteByIdAsync(Guid id)
         {
             var entity = await GetByIdAsync(id);
             if (entity != null)
@@ -34,10 +37,25 @@ namespace GymHub.Data.Repository
                 dbSet.Remove(entity);
                 await context.SaveChangesAsync();
             }
-
         }
 
-        
+        public async Task DeleteByItemAsync(T entity)
+        {
+            dbSet.Remove(entity);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        {
+
+#pragma warning disable CS8603 // Possible null reference return.
+            return await this.dbSet
+                .FirstOrDefaultAsync(predicate);
+#pragma warning restore CS8603 // Possible null reference return.
+
+
+
+        }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {

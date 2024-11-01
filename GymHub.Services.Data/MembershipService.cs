@@ -49,7 +49,7 @@ namespace GymHub.Services.Data
         public async Task CancelMembershipAsync(Guid Id)
         { 
 
-            await context.DeleteAsync(Id);
+            await context.DeleteByIdAsync(Id);
         }
 
         public async Task<IEnumerable<AllMembershipsViewModel>> GetAllMembershipsAsync(Guid userId)
