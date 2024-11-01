@@ -29,11 +29,16 @@ namespace GymHub.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddReviewInputModel model,string Id)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            Guid gymId = Guid.Parse(Id);
+
+            bool isValidGuid = Guid.TryParse(Id, out Guid gymId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
 
             Guid userId=GetUserId();
 
@@ -46,7 +51,12 @@ namespace GymHub.Web.Controllers
         }
         public async Task<IActionResult> ReviewsForGym(string Id)
         {
-            Guid gymId=Guid.Parse(Id);
+
+            bool isValidGuid = Guid.TryParse(Id, out Guid gymId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
 
             var list=await service.GetAllReviewsForGymAsync(gymId);
 
