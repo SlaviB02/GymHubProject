@@ -40,7 +40,7 @@ namespace GymHub.Services.Data
         {
             var list = await context
                .GetAllAttached()
-               .Where(r=>r.GymId==gymId)
+               .Where(r=>r.GymId==gymId && r.IsDeleted==false)
                .Select(r => new AllReviewViewModel()
                {
                    Title = r.Title,
@@ -57,6 +57,7 @@ namespace GymHub.Services.Data
         {
             var list= await context
                 .GetAllAttached()
+                .Where(r=> r.IsDeleted == false)
                 .Select(r=>new AllReviewViewModel()
                 {
                     Title=r.Title,
@@ -71,9 +72,53 @@ namespace GymHub.Services.Data
 
         }
 
-        public async Task DeleteReviewAsync(Guid reviewId)
+        public async Task<bool> DeleteReviewAsync(Guid reviewId)
         {
-            await context.DeleteByIdAsync(reviewId);  
+            Review review=await context.FirstOrDefaultAsync(r=>r.Id==reviewId && r.IsDeleted==false);
+
+
+            if(review==null)
+            {
+                return false;
+            }
+
+            review.IsDeleted = true;
+
+            await context.UpdateAsync(review);
+
+            return true;
+        }
+
+        public async Task<EditReviewModel> GetEditReviewModelAsync(Guid id)
+        {
+            var review=await context.GetByIdAsync(id);
+
+            EditReviewModel model = new EditReviewModel()
+            {
+                Title = review.Title,
+                Body = review.MainBody,
+                Id = id,
+                GymId=review.GymId, 
+                UserId=review.UserId
+            };
+
+            return model;
+        }
+
+        public async Task<bool> UpdateReviewAsync(EditReviewModel model)
+        {
+            
+            Review rev = new Review()
+            {
+                Title = model.Title,
+                MainBody = model.Body,
+                Id = model.Id,
+                GymId=model.GymId,
+                UserId=model.UserId
+            };
+            bool res = await context.UpdateAsync(rev);
+
+            return res;
         }
     }
 }

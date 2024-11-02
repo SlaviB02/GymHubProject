@@ -70,9 +70,49 @@ namespace GymHub.Web.Controllers
                 return BadRequest();
             }
 
-            await service.DeleteReviewAsync(reviewId);
+          var res=await service.DeleteReviewAsync(reviewId);
 
-            return RedirectToAction("Index","Gym");
+            if(res==false)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Manage");
+        }
+        public async Task<IActionResult>Manage()
+        {
+            var list = await service.GetAllReviewsAsync();
+
+            return View(list);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            bool isValidGuid = Guid.TryParse(id, out Guid reviewId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
+            var model=await service.GetEditReviewModelAsync(reviewId);
+
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult>Edit(EditReviewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            bool res = await service.UpdateReviewAsync(model);
+
+            if (res == false)
+            {
+                return RedirectToAction("Manage");
+            }
+
+            return RedirectToAction("Manage");
         }
     }
 }

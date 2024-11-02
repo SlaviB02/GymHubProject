@@ -15,6 +15,10 @@ namespace GymHub.Services.Data.Interfaces
 
         Task<IEnumerable<AllReviewViewModel>> GetAllReviewsForGymAsync(Guid gymId);
 
-        Task DeleteReviewAsync(Guid reviewId);
+        Task<bool> DeleteReviewAsync(Guid reviewId);
+
+        Task<EditReviewModel> GetEditReviewModelAsync(Guid id);
+
+        Task<bool> UpdateReviewAsync(EditReviewModel model);
     }
 }
