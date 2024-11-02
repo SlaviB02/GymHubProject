@@ -19,7 +19,7 @@ namespace GymHub.Data.Repository.Interfaces
 
         Task AddAsync(T entity);
 
-        Task UpdateAsync(T entity);
+        Task<bool> UpdateAsync(T entity);
 
         Task DeleteByIdAsync(Guid id);
 

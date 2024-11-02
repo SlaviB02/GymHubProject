@@ -14,5 +14,15 @@ namespace GymHub.Services.Data.Interfaces
         Task<GymDetailsViewModel> GetDetailsGymAsync(Guid id);
 
         Task<IEnumerable<GymNamesViewModel>> GetGymNamesAsync();
+
+        Task AddGymAsync(AddGymFormModel model);
+
+        Task<EditGymFormModel> GetEditModelAsync(Guid gymId);
+
+        Task<bool> UpdateGymAsync(EditGymFormModel model);
+
+        Task<bool> DeleteGymAsync(Guid gymId);
+
+        Task<DeleteGymModel> GetDeleteModelAsync(Guid gymId);
     }
 }

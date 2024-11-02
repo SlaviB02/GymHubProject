@@ -53,6 +53,9 @@
 
             public const int DescriptionMinLength = 20;
             public const int DescriptionMaxLength = 400;
+
+            public const int HourMinRange = 0;
+            public const int HourMaxRange = 24;
         }
         
 

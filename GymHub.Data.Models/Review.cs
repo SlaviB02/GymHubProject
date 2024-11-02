@@ -27,6 +27,8 @@ namespace GymHub.Data.Models
         [Comment("The MainBody of the Review")]
         public string MainBody { get; set; } = null!;
 
+        public bool IsDeleted { get; set; }
+
         [Required]
         [Comment("The unique identifier of the User that posted the review")]
         public Guid UserId { get; set; }

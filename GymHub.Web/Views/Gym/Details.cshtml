@@ -1,5 +1,6 @@
 ﻿@model GymDetailsViewModel
 
+<img src="@Model.ImageUrl" class="card-img-top img-fluid" style=" width: 400px; height: 400px; object-fit:contain;" />
 
 <h2>@Model.Name</h2>
 
@@ -10,3 +11,5 @@
 <p><span>Working Hours: </span>@Model.OpeningHour h - @Model.ClosingHour h</p>
 
 <a asp-action="Index" class="btn btn-primary">Back to Gyms</a>
+
+<a asp-action="Manage" class="btn btn-primary">Back to Manage Gyms</a>

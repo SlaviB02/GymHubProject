@@ -76,11 +76,20 @@ namespace GymHub.Data.Repository
 
       
 
-        public async Task UpdateAsync(T entity)
+        public async Task<bool> UpdateAsync(T entity)
         {
-            dbSet.Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            try
+            {
+                dbSet.Attach(entity);
+                context.Entry(entity).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
 
         }
     }
