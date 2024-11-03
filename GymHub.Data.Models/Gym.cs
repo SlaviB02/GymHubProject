@@ -43,7 +43,6 @@ namespace GymHub.Data.Models
 
         public bool IsDeleted {  get; set; }
 
-        public ICollection<GymEquipment> GymsEquipments { get; set; } = new HashSet<GymEquipment>();
 
         public ICollection<Review> Reviews { get; set; }=new HashSet<Review>();
 

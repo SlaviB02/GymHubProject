@@ -57,6 +57,15 @@
             public const int HourMinRange = 0;
             public const int HourMaxRange = 24;
         }
+
+        public static class GymClass
+        {
+            public const int NameMinLength = 5;
+            public const int NameMaxLength = 40;
+
+            public const int MinDuration = 20;
+            public const int MaxDuration = 120;
+        }
         
 
     }

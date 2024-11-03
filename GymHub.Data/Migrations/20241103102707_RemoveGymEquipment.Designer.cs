@@ -4,6 +4,7 @@ using GymHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymHub.Data.Migrations
 {
     [DbContext(typeof(GymHubDbContext))]
-    partial class GymHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241103102707_RemoveGymEquipment")]
+    partial class RemoveGymEquipment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,12 +106,6 @@ namespace GymHub.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasComment("The unique identifier of the Gym that the class is in");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasComment("The name of the Class");
-
                     b.Property<DateTime>("StartTimeAndDate")
                         .HasColumnType("datetime2")
                         .HasComment("Starting time and date of the Class");
@@ -117,7 +114,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Classes", (string)null);
+                    b.ToTable("Classes");
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.ClassUser", b =>
@@ -134,7 +131,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ClassesUsers", (string)null);
+                    b.ToTable("ClassesUsers");
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.Gym", b =>
@@ -179,7 +176,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Gyms", (string)null);
+                    b.ToTable("Gyms");
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.Membership", b =>
@@ -229,7 +226,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Memberships", (string)null);
+                    b.ToTable("Memberships");
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.Review", b =>
@@ -268,7 +265,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.Trainer", b =>
@@ -314,7 +311,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Trainers", (string)null);
+                    b.ToTable("Trainers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>

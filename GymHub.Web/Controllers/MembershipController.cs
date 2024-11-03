@@ -53,7 +53,7 @@ namespace GymHub.Web.Controllers
             if(res!=true)
             {
                 ModelState.AddModelError(nameof(model.StartDate),
-                   String.Format("The Release Date must be in the following format: {0}", DateOnlyFormat));
+                   String.Format("The Date must be in the following format: {0}", DateOnlyFormat));
                 model.Types = service.GetTypesNames();
                 model.Gyms = await gymService.GetGymNamesAsync();
                 return View(model);
