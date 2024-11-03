@@ -2,7 +2,7 @@
 using GymHub.Services.Data.Interfaces;
 using GymHub.Web.ViewModels.Class;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Globalization;
 using static GymHub.Common.ApplicationConstants;
 
 namespace GymHub.Web.Controllers
@@ -59,6 +59,58 @@ namespace GymHub.Web.Controllers
             }
 
             return RedirectToAction("ClassesForGym", new {id=model.GymId});
+        }
+        public async Task<IActionResult>Manage()
+        {
+            var list=await ClassService.GetAllClassesAsync();
+
+            return View(list);
+        }
+        [HttpGet]
+        public async Task<IActionResult>Edit(string id)
+        {
+            bool isValidGuid = Guid.TryParse(id, out Guid reviewId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
+
+            var model = await ClassService.GetEditModelAsync(reviewId);
+
+
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditClassFormModel model)
+        {
+            bool isReleaseDateValid = DateTime
+           .TryParseExact(model.DateAndTime, DateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
+               out DateTime dateTime);
+
+            if (!ModelState.IsValid || !isReleaseDateValid)
+            {
+                return View(model);
+            }
+
+          await ClassService.EditClassAsync(model);
+
+
+            return RedirectToAction("Manage");
+
+        }
+        public async Task<IActionResult> Delete(string id)
+        {
+            bool isValidGuid = Guid.TryParse(id, out Guid classId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
+
+           await ClassService.DeleteClassAsync(classId);
+
+        
+
+            return RedirectToAction("Manage");
         }
     }
 }

@@ -12,9 +12,13 @@ namespace GymHub.Web.ViewModels.Class
 
         public required string StartTimeAndDate { get; set; }
 
+        public required string Instructor {  get; set; }
+
         public int Duration { get; set; }
 
         public Guid Id { get; set; }
+
+        public string? GymName {  get; set; }
 
     }
 }

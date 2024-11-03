@@ -117,7 +117,7 @@ namespace GymHub.Web.Controllers
 
             if(res==false)
             {
-                return RedirectToAction("Details", new { id = id });
+                return RedirectToAction("Manage");
             }
 
             return RedirectToAction("Manage");

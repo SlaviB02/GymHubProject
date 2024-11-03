@@ -8,5 +8,14 @@ namespace GymHub.Services.Data.Interfaces
         Task<IEnumerable<AllClassViewModel>> GetAllClassesForGymAsync(Guid gymId);
 
         Task<bool> AddClassAsync(AddClassViewModel model);
+
+        Task<IEnumerable<AllClassViewModel>> GetAllClassesAsync();
+
+        Task<EditClassFormModel> GetEditModelAsync(Guid classId);
+
+        Task<bool> EditClassAsync(EditClassFormModel model);
+
+        Task<bool> DeleteClassAsync(Guid classId);
+
     }
 }

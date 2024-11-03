@@ -39,15 +39,20 @@ namespace GymHub.Services.Data
 
         public async Task<bool> DeleteGymAsync(Guid gymId)
         {
-           var gym=await context.FirstOrDefaultAsync(g => g.Id == gymId && g.IsDeleted == false);
+           var gym=await context
+                .GetAllAttached()
+                .Include(g=>g.Memberships)
+                .Include(g=>g.Classes)
+                .FirstOrDefaultAsync(g => g.Id == gymId && g.IsDeleted == false);
 
             if(gym==null)
             {
                 return false;
             }
-            bool hasActiveMemberships=gym.Memberships.Any();
+            bool hasActiveMemberships = gym.Memberships.Count() > 0;
+            bool hasClasses=gym.Classes.Count() > 0;
 
-            if(hasActiveMemberships)
+            if(hasActiveMemberships==true || hasClasses==true)
             {
                 return false;
             }

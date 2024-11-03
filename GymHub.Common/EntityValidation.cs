@@ -65,6 +65,9 @@
 
             public const int MinDuration = 20;
             public const int MaxDuration = 120;
+
+            public const int InstructorMinLength = 3;
+            public const int InstructorMaxLength = 50;
         }
         
 

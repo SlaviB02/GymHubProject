@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AllClassViewModel>
+
+@{
+    ViewData["Title"] = "Manage Classes";
+}
+
+<h2>Manage Classes</h2>
+
+<div class="mb-3">
+    <a asp-action="Add" class="btn btn-success">Add Class</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Insturctor</th>
+            <th>Starting time and date</th>
+            <th>Duration</th>
+            <th>Gym Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var gymClass in Model)
+        {
+            <tr>
+                <td>@gymClass.Name</td>
+                <td>@gymClass.Instructor</td>
+                <td>@gymClass.StartTimeAndDate</td>
+                <td>@gymClass.Duration minutes</td>
+                <td>@gymClass.GymName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@gymClass.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@gymClass.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

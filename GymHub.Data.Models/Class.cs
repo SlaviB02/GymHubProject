@@ -17,6 +17,11 @@ namespace GymHub.Data.Models
         public string Name { get; set; } = null!;
 
         [Required]
+        [StringLength(InstructorMaxLength)]
+        [Comment("The name of the Instructor of the class")]
+        public string Instructor { get; set; } = null!;
+
+        [Required]
         [Comment("Starting time and date of the Class")]
         public DateTime StartTimeAndDate { get; set; }
 
@@ -33,5 +38,8 @@ namespace GymHub.Data.Models
         public Gym Gym { get; set; } = null!;
 
         public ICollection<ClassUser> ClassesUsers { get; set; }= new HashSet<ClassUser>();
+
+        [Comment("Flag for seeing if the entity is deleted or not")]
+        public bool isDeleted { get; set; }
     }
 }

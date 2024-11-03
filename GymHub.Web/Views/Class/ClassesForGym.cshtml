@@ -8,6 +8,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+            <th>Insturctor</th>
             <th>Starting time and date</th>
             <th>Duration</th>
             <th></th>
@@ -18,8 +19,9 @@
             {
                 <tr>
                     <td>@gymClass.Name</td>
+                    <td>@gymClass.Instructor</td>
                     <td>@gymClass.StartTimeAndDate</td>
-                    <td>@gymClass.Duration</td>
+                    <td>@gymClass.Duration minutes</td>
                 <td>
                     <a asp-action="SignUp" asp-route-id="@gymClass.Id" class="btn btn-info btn-sm">Sign up</a>
                     <a asp-action="Participants" asp-route-id="@gymClass.Id" class="btn btn-info btn-sm">Participants</a>
