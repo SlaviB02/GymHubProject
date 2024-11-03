@@ -39,6 +39,7 @@ builder.Services.AddScoped<IRepository<Gym>, Repository<Gym>>();
 builder.Services.AddScoped<IRepository<Membership>, Repository<Membership>>();
 builder.Services.AddScoped<IRepository<Review>, Repository<Review>>();
 builder.Services.AddScoped<IRepository<Class>,Repository<Class>>();
+builder.Services.AddScoped<IRepository<ClassUser>, Repository<ClassUser>>();
 
 builder.Services.AddScoped<IGymService, GymService>();
 builder.Services.AddScoped<IMembershipService, MembershipService>();

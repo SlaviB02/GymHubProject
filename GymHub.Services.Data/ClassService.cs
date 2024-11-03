@@ -13,11 +13,13 @@ namespace GymHub.Services.Data
 {
     public class ClassService:IClassService
     {
-        private readonly IRepository<Class> context;
+        private readonly IRepository<Class> ClassContext;
+        private readonly IRepository<ClassUser> ClassUserContext;
 
-        public ClassService(IRepository<Class> _context)
+        public ClassService(IRepository<Class> _context, IRepository<ClassUser> classUserContext)
         {
-            context = _context; 
+            ClassContext = _context;
+            ClassUserContext = classUserContext;
         }
 
         public async Task<bool> AddClassAsync(AddClassViewModel model)
@@ -38,14 +40,14 @@ namespace GymHub.Services.Data
                 Instructor=model.Instructor,
             };
 
-            await context.AddAsync(gymClass);
+            await ClassContext.AddAsync(gymClass);
 
             return true;
         }
 
         public async Task<bool> DeleteClassAsync(Guid classId)
         {
-            Class gymClass = await context.FirstOrDefaultAsync(c=>c.Id == classId && c.isDeleted== false);
+            Class gymClass = await ClassContext.FirstOrDefaultAsync(c=>c.Id == classId && c.isDeleted== false);
 
 
             if (gymClass == null)
@@ -55,7 +57,7 @@ namespace GymHub.Services.Data
 
             gymClass.isDeleted = true;
 
-            await context.UpdateAsync(gymClass);
+            await ClassContext.UpdateAsync(gymClass);
 
             return true;
         }
@@ -73,14 +75,14 @@ namespace GymHub.Services.Data
                 GymId=model.GymId,
             };
 
-            bool res = await context.UpdateAsync(gymClass);
+            bool res = await ClassContext.UpdateAsync(gymClass);
 
             return res;
         }
 
         public async Task<IEnumerable<AllClassViewModel>> GetAllClassesAsync()
         {
-            var list = await context.GetAllAttached()
+            var list = await ClassContext.GetAllAttached()
                .Where(c=>c.isDeleted == false)
                .Select(c => new AllClassViewModel()
                {
@@ -98,7 +100,7 @@ namespace GymHub.Services.Data
 
         public async Task<IEnumerable<AllClassViewModel>> GetAllClassesForGymAsync(Guid gymId)
         {
-            var list = await context.GetAllAttached()
+            var list = await ClassContext.GetAllAttached()
                 .Where(c => c.GymId == gymId && c.isDeleted==false)
                 .Select(c => new AllClassViewModel()
                 {
@@ -113,9 +115,28 @@ namespace GymHub.Services.Data
             return list;
         }
 
+        public async Task<IEnumerable<UserClassViewModel>> GetClassesForUserAsync(Guid userId)
+        {
+            var list= await ClassContext.GetAllAttached()
+                .Include(c=>c.ClassesUsers)
+                .Where(c=>c.ClassesUsers.Any(cu=>cu.UserId==userId))
+                .Select(c=>new UserClassViewModel
+                {  
+                    Name=c.Name,
+                    Duration=c.Duration,
+                    DateAndTime=c.StartTimeAndDate.ToString(DateTimeFormat),
+                    Instructor=c.Instructor,
+                    GymName=c.Gym.Name,
+                    Id=c.Id,
+                })
+                .ToListAsync();
+
+            return list;
+        }
+
         public async Task<EditClassFormModel> GetEditModelAsync(Guid classId)
         {
-            var gymClass = await context.FirstOrDefaultAsync(c => c.isDeleted == false && c.Id == classId);
+            var gymClass = await ClassContext.FirstOrDefaultAsync(c => c.isDeleted == false && c.Id == classId);
 
             EditClassFormModel model = new EditClassFormModel()
             {
@@ -130,6 +151,40 @@ namespace GymHub.Services.Data
 
 
             return model;
+        }
+
+        public async Task<bool> SignUserForClassAsync(Guid userId, Guid classId)
+        {
+            var existingClass =await ClassUserContext.FirstOrDefaultAsync(cu => cu.ClassId == classId && cu.UserId == userId);
+
+            if (existingClass != null)
+            {
+                return false;
+            }
+
+            ClassUser cu = new ClassUser()
+            {
+                UserId = userId,
+                ClassId = classId
+            };
+
+            await ClassUserContext.AddAsync(cu);
+
+            return true;
+        }
+
+        public async Task<bool> UnsignUserFromClassAsync(Guid userId, Guid classId)
+        {
+            var existingClass = await ClassUserContext.FirstOrDefaultAsync(cu => cu.ClassId == classId && cu.UserId == userId);
+
+            if (existingClass==null)
+            {
+                return false;
+            }
+
+            await ClassUserContext.DeleteByItemAsync(existingClass);
+
+            return true;
         }
     }
 }
