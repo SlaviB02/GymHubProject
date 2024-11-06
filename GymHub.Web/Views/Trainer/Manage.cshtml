@@ -1,0 +1,34 @@
+﻿@model IEnumerable<GymTrainerViewModel>
+
+
+
+<h2>Manage Trainers</h2>
+
+<div class="mb-3">
+    <a asp-action="Add" class="btn btn-success">Add Trainer</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trainer in Model)
+        {
+            <tr>
+                <td>@trainer.FirstName  @trainer.LastName</td>
+                <td>@trainer.Phone</td>
+                <td>@trainer.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@trainer.id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@trainer.id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

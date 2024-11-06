@@ -19,7 +19,13 @@ namespace GymHub.Web.Controllers
                 return BadRequest();
             }
 
-            var list =await service.GetTrainersForGym(gymId);
+            var list =await service.GetTrainersForGymAsync(gymId);
+
+            return View(list);
+        }
+        public async Task<IActionResult>Manage()
+        {
+            var list = await service.GetAllTrainersAsync();
 
             return View(list);
         }

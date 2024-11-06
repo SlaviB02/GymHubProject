@@ -20,7 +20,24 @@ namespace GymHub.Services.Data
             context = _context;
         }
 
-        public async Task<IEnumerable<GymTrainerViewModel>> GetTrainersForGym(Guid gymId)
+        public async Task<IEnumerable<GymTrainerViewModel>> GetAllTrainersAsync()
+        {
+            var trainers = await context.GetAllAttached()
+                .Select(t => new GymTrainerViewModel()
+                {
+                    FirstName = t.FirstName,
+                    LastName = t.LastName,
+                    Phone = t.PhoneNumber,
+                    Email = t.Email,
+                    ImageUrl = t.ImageUrl,
+                    id = t.Id
+                })
+                .ToListAsync();
+
+            return trainers;
+        }
+
+        public async Task<IEnumerable<GymTrainerViewModel>> GetTrainersForGymAsync(Guid gymId)
         {
             var trainers= await context.GetAllAttached()
                 .Where(t=>t.GymId == gymId)
@@ -31,10 +48,12 @@ namespace GymHub.Services.Data
                     Phone=t.PhoneNumber,
                     Email=t.Email,
                     ImageUrl=t.ImageUrl,
+                    id=t.Id
                 })
                 .ToListAsync();
 
             return trainers;
         }
+
     }
 }

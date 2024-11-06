@@ -18,6 +18,8 @@ namespace GymHub.Web.ViewModels.Trainer
 
         public string? ImageUrl {  get; set; }
 
+        public Guid id { get; set; }
+
 
     }
 }

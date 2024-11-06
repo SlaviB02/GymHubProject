@@ -9,8 +9,8 @@ namespace GymHub.Services.Data.Interfaces
 {
     public interface ITrainerService
     {
-        Task<IEnumerable<GymTrainerViewModel>> GetTrainersForGym(Guid gymId);
+        Task<IEnumerable<GymTrainerViewModel>> GetTrainersForGymAsync(Guid gymId);
 
-
+        Task<IEnumerable<GymTrainerViewModel>> GetAllTrainersAsync();
     }
 }
