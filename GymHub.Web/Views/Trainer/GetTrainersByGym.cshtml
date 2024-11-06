@@ -1,0 +1,30 @@
+﻿@model IEnumerable<GymTrainerViewModel>
+
+            <div class="container mt-5">
+                <div class="row">
+                    @foreach (var trainer in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-10">
+                        @if (!string.IsNullOrEmpty(trainer.ImageUrl))
+                        {
+                            <img src="@trainer.ImageUrl" class="card-img-top img-fluid" style="height: 400px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <img src="/images/DefaultTrainer.png" class="card-img-top img-fluid" style="height: 400px; object-fit: cover;">
+                        }
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">@trainer.FirstName  @trainer.LastName</h5>
+                                    <p class="card-text">
+                                        <strong>Email:</strong> @trainer.Email<br>
+                                        <strong>Phone:</strong> @trainer.Phone
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+ 
+

@@ -40,11 +40,13 @@ builder.Services.AddScoped<IRepository<Membership>, Repository<Membership>>();
 builder.Services.AddScoped<IRepository<Review>, Repository<Review>>();
 builder.Services.AddScoped<IRepository<Class>,Repository<Class>>();
 builder.Services.AddScoped<IRepository<ClassUser>, Repository<ClassUser>>();
+builder.Services.AddScoped<IRepository<Trainer>, Repository<Trainer>>();
 
 builder.Services.AddScoped<IGymService, GymService>();
 builder.Services.AddScoped<IMembershipService, MembershipService>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IClassService, ClassService>();
+builder.Services.AddScoped<ITrainerService, TrainerService>();
 
 builder.Services.AddControllersWithViews();
 

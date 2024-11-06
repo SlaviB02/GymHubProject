@@ -116,6 +116,7 @@ namespace GymHub.Services.Data
                     ImageUrl = gym.ImageUrl,
                     OpeningHour = gym.OpeningHour,
                     ClosingHour = gym.ClosingHour,
+                    Id = id
                 };
             }
 

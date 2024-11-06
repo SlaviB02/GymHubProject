@@ -26,5 +26,7 @@ namespace GymHub.Web.ViewModels.Gym
     
         public int ClosingHour { get; set; }
 
+        public Guid Id { get; set; }
+
     }
 }
