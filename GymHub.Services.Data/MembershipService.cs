@@ -22,10 +22,9 @@ namespace GymHub.Services.Data
 
         public async Task<bool> AddMembershipAsync(AddMembershipInputModel membership, Guid userId)
         {
-            bool isReleaseDateValid = DateTime
-              .TryParseExact(membership.StartDate, DateOnlyFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
-                  out DateTime date);
-            if (!isReleaseDateValid)
+         
+
+            if(context.FirstOrDefaultAsync(m=>m.UserId==userId && m.GymId==membership.GymId)!=null)
             {
                 return false;
             }
@@ -36,7 +35,7 @@ namespace GymHub.Services.Data
                 FirstName = membership.FirstName,
                 LastName = membership.LastName,
                 PhoneNumber = membership.PhoneNumber,
-                StartDate = date,
+                StartDate = DateTime.Parse(membership.StartDate),
                 Type = (MembershipType)Enum.Parse(typeof(MembershipType), membership.Type),
                 GymId=membership.GymId,
             };

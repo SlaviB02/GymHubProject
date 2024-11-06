@@ -1,7 +1,9 @@
 ﻿using GymHub.Services.Data.Interfaces;
+using GymHub.Web.ViewModels.Gym;
 using GymHub.Web.ViewModels.Membership;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Security.Claims;
 
 using static GymHub.Common.ApplicationConstants;
@@ -39,10 +41,26 @@ namespace GymHub.Web.Controllers
         [HttpPost]
         public async Task<IActionResult>Add(AddMembershipInputModel model)
         {
-            if(!ModelState.IsValid)
+            IEnumerable<string> types = service.GetTypesNames();
+            IEnumerable<GymNamesViewModel> gyms =await gymService.GetGymNamesAsync();
+
+            bool isValidDate = DateTime
+            .TryParseExact(model.StartDate, DateOnlyFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
+                out DateTime date);
+
+            if (!ModelState.IsValid)
             {
-                model.Types = service.GetTypesNames();
-                model.Gyms = await gymService.GetGymNamesAsync();
+                model.Types = types;
+                model.Gyms = gyms;
+                return View(model);
+            }
+
+            if (!isValidDate)
+            {
+                ModelState.AddModelError(nameof(model.StartDate),
+                  String.Format("The Date must be in the following format: {0}", DateOnlyFormat));
+                model.Types = types;
+                model.Gyms = gyms;
                 return View(model);
             }
 
@@ -50,13 +68,11 @@ namespace GymHub.Web.Controllers
 
             bool res = await service.AddMembershipAsync(model,userId);
 
+
             if(res!=true)
             {
-                ModelState.AddModelError(nameof(model.StartDate),
-                   String.Format("The Date must be in the following format: {0}", DateOnlyFormat));
-                model.Types = service.GetTypesNames();
-                model.Gyms = await gymService.GetGymNamesAsync();
-                return View(model);
+                return RedirectToAction("Index");
+                
             }
 
             return RedirectToAction("Index");

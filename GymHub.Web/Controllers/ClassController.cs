@@ -1,6 +1,7 @@
 ﻿using GymHub.Services.Data;
 using GymHub.Services.Data.Interfaces;
 using GymHub.Web.ViewModels.Class;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using static GymHub.Common.ApplicationConstants;
@@ -112,7 +113,7 @@ namespace GymHub.Web.Controllers
 
             return RedirectToAction("Manage");
         }
-
+        [Authorize]
         public async Task<IActionResult>MyClasses()
         {
             Guid userId= GetUserId();

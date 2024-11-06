@@ -151,8 +151,8 @@ namespace GymHub.Services.Data
 
         public async Task<IEnumerable<GymNamesViewModel>> GetGymNamesAsync()
         {
-            var list = await context.GetAllAttached()
-                .Where(g=>g.IsDeleted==false)
+            var list =await context.GetAllAttached()
+                .Where(g => g.IsDeleted == false)
                 .Select(g => new GymNamesViewModel()
                 {
                     Name = g.Name,
