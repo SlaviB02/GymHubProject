@@ -20,9 +20,59 @@ namespace GymHub.Services.Data
             context = _context;
         }
 
+        public async Task AddTrainerAsync(AddTrainerViewModel model)
+        {
+            Trainer trainer = new Trainer()
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                GymId = model.GymId,
+                ImageUrl = model.ImageUrl,
+            };
+
+            await context.AddAsync(trainer);
+        }
+
+        public async Task<bool> DeleteTrainerAsync(Guid trainerId)
+        {
+            var trainer = await context.FirstOrDefaultAsync(c => c.Id == trainerId && c.isDeleted == false);
+
+            if(trainer==null)
+            {
+                return false;
+            }
+
+            trainer.isDeleted = true;
+
+            await context.UpdateAsync(trainer);
+
+            return true;
+        }
+
+        public async Task<bool> EditTrainerAsync(EditTrainerViewModel model)
+        {
+            Trainer trainer = new Trainer()
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                ImageUrl = model.ImageUrl,
+                GymId = model.GymId,
+                Id = model.Id,
+            };
+
+            var res=await context.UpdateAsync(trainer);
+
+            return res;
+        }
+
         public async Task<IEnumerable<GymTrainerViewModel>> GetAllTrainersAsync()
         {
             var trainers = await context.GetAllAttached()
+                .Where(t => t.isDeleted == false)
                 .Select(t => new GymTrainerViewModel()
                 {
                     FirstName = t.FirstName,
@@ -37,10 +87,27 @@ namespace GymHub.Services.Data
             return trainers;
         }
 
+        public async Task<EditTrainerViewModel> GetEditModelAsync(Guid trainerId)
+        {
+            var trainer=await context.FirstOrDefaultAsync(c=>c.Id == trainerId && c.isDeleted==false);
+            EditTrainerViewModel model = new EditTrainerViewModel()
+            {
+                FirstName= trainer.FirstName,
+                LastName= trainer.LastName,
+                PhoneNumber= trainer.PhoneNumber,
+                Email = trainer.Email,
+                Id = trainerId,
+                ImageUrl= trainer.ImageUrl,
+                GymId= trainer.GymId,
+            };
+
+            return model;
+        }
+
         public async Task<IEnumerable<GymTrainerViewModel>> GetTrainersForGymAsync(Guid gymId)
         {
             var trainers= await context.GetAllAttached()
-                .Where(t=>t.GymId == gymId)
+                .Where(t=>t.GymId == gymId && t.isDeleted==false)
                 .Select(t=>new GymTrainerViewModel()
                 {
                     FirstName = t.FirstName,

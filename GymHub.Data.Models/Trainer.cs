@@ -47,5 +47,7 @@ namespace GymHub.Data.Models
 
         public Gym Gym { get; set; } = null!;
 
+        public bool isDeleted { get; set; }
+
     }
 }
