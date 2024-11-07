@@ -42,7 +42,6 @@ namespace GymHub.Web.Controllers
         public async Task<IActionResult>Add(AddMembershipInputModel model)
         {
             IEnumerable<string> types = service.GetTypesNames();
-            IEnumerable<GymNamesViewModel> gyms =await gymService.GetGymNamesAsync();
 
             bool isValidDate = DateTime
             .TryParseExact(model.StartDate, DateOnlyFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
@@ -51,7 +50,7 @@ namespace GymHub.Web.Controllers
             if (!ModelState.IsValid)
             {
                 model.Types = types;
-                model.Gyms = gyms;
+                model.Gyms = await gymService.GetGymNamesAsync();
                 return View(model);
             }
 
@@ -60,7 +59,7 @@ namespace GymHub.Web.Controllers
                 ModelState.AddModelError(nameof(model.StartDate),
                   String.Format("The Date must be in the following format: {0}", DateOnlyFormat));
                 model.Types = types;
-                model.Gyms = gyms;
+                model.Gyms = await gymService.GetGymNamesAsync();
                 return View(model);
             }
 

@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace GymHub.Data
@@ -15,7 +18,7 @@ namespace GymHub.Data
         public GymHubDbContext(DbContextOptions<GymHubDbContext> options)
             : base(options)
         {
-
+            
         }
 
         public DbSet<Trainer> Trainers { get; set; } = null!;
@@ -31,5 +34,14 @@ namespace GymHub.Data
         public DbSet<ClassUser>ClassesUsers { get; set; } = null!;
 
         public DbSet<Gym> Gyms {  get; set; } = null!;
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            
+
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
     }
 }

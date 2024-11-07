@@ -1,0 +1,146 @@
+[
+  {
+    "Id": "a1e4b2ff-4d1a-4c2a-a0b2-1f5f4f57e6a9",
+    "Name": "Yoga Basics",
+    "Instructor": "Sarah Lee",
+    "StartTimeAndDate": "2023-11-07T08:00:00",
+    "Duration": 60,
+    "GymId": "d5f4b10a-42a1-4f63-8c7f-1a7f9bc8e4e0"
+  },
+  {
+    "Id": "b2c7d8ff-2a3b-4e1d-b0a3-3d6e9a5f9c8d",
+    "Name": "HIIT Training",
+    "Instructor": "Mike Turner",
+    "StartTimeAndDate": "2023-11-07T09:30:00",
+    "Duration": 45,
+    "GymId": "d5f4b10a-42a1-4f63-8c7f-1a7f9bc8e4e0"
+  },
+  {
+    "Id": "c3d5e1ff-3a9c-4f3d-c1b4-4e7f6b8f6d8e",
+    "Name": "Zumba Dance",
+    "Instructor": "Emily Chen",
+    "StartTimeAndDate": "2023-11-07T11:00:00",
+    "Duration": 50,
+    "GymId": "d5f4b10a-42a1-4f63-8c7f-1a7f9bc8e4e0"
+  },
+  {
+    "Id": "d4a8f2ff-5c4a-4d7d-d2c0-5f9e4b4d7f6f",
+    "Name": "Strength Training",
+    "Instructor": "John Adams",
+    "StartTimeAndDate": "2023-11-07T12:30:00",
+    "Duration": 60,
+    "GymId": "b21d17f5-9c92-4a72-8b77-33c4f08d8df8"
+  },
+  {
+    "Id": "e5b1c3ff-6d3b-4f5e-e3a1-6c8e5d6f9c7b",
+    "Name": "Pilates Core",
+    "Instructor": "Anna Walker",
+    "StartTimeAndDate": "2023-11-07T14:00:00",
+    "Duration": 55,
+    "GymId": "b21d17f5-9c92-4a72-8b77-33c4f08d8df8"
+  },
+  {
+    "Id": "f6d9e4ff-7e2c-4b6e-f4b2-7d7f8b5f8a7c",
+    "Name": "Cardio Blast",
+    "Instructor": "Tommy Lee",
+    "StartTimeAndDate": "2023-11-07T15:30:00",
+    "Duration": 40,
+    "GymId": "b21d17f5-9c92-4a72-8b77-33c4f08d8df8"
+  },
+  {
+    "Id": "a7f3c2ff-8b5d-4d5e-a6c3-8e9d6c7f4e8d",
+    "Name": "CrossFit",
+    "Instructor": "Rachel Green",
+    "StartTimeAndDate": "2023-11-07T17:00:00",
+    "Duration": 60,
+    "GymId": "f9e5b2ab-7edc-4d33-888f-0ab0c9b9fd0b"
+  },
+  {
+    "Id": "b8d1e8ff-9c6d-4a7f-b9d4-9f7e4d3f5a6d",
+    "Name": "Spinning",
+    "Instructor": "Jake Lewis",
+    "StartTimeAndDate": "2023-11-07T18:30:00",
+    "Duration": 45,
+    "GymId": "f9e5b2ab-7edc-4d33-888f-0ab0c9b9fd0b"
+  },
+  {
+    "Id": "c9e5a9ff-0d7c-4c8e-c7f6-0b8f5e6d3a6e",
+    "Name": "Boxing Basics",
+    "Instructor": "Sophie King",
+    "StartTimeAndDate": "2023-11-07T20:00:00",
+    "Duration": 50,
+    "GymId": "f9e5b2ab-7edc-4d33-888f-0ab0c9b9fd0b"
+  },
+  {
+    "Id": "d0a4b1ff-1f8c-4b6d-d8c5-1c6f5d4f7e7f",
+    "Name": "Aerobics",
+    "Instructor": "William Scott",
+    "StartTimeAndDate": "2023-11-08T08:00:00",
+    "Duration": 60,
+    "GymId": "a3b2c1d4-e8f9-4a02-9b3c-5d2e9f7e1c2f"
+  },
+  {
+    "Id": "e1d7c4ff-2e9d-4d7f-e9b6-2d8e6d3a5f4e",
+    "Name": "Advanced Yoga",
+    "Instructor": "Linda Brown",
+    "StartTimeAndDate": "2023-11-08T09:30:00",
+    "Duration": 60,
+    "GymId": "a3b2c1d4-e8f9-4a02-9b3c-5d2e9f7e1c2f"
+  },
+  {
+    "Id": "f2a8d3ff-3f1e-4a8b-f1a7-3a7e4b3f5a8d",
+    "Name": "TRX Training",
+    "Instructor": "Michael Taylor",
+    "StartTimeAndDate": "2023-11-08T11:00:00",
+    "Duration": 45,
+    "GymId": "a3b2c1d4-e8f9-4a02-9b3c-5d2e9f7e1c2f"
+  },
+  {
+    "Id": "a3c9e2ff-4f2a-4d7a-a2b9-4b8f5d2e7c6e",
+    "Name": "Kettlebell Workout",
+    "Instructor": "Jessica Parker",
+    "StartTimeAndDate": "2023-11-08T12:30:00",
+    "Duration": 50,
+    "GymId": "b7c3d8e2-f5a4-4b23-910f-6c9d2e3a7f4e"
+  },
+  {
+    "Id": "b4d1f1ff-5b3c-4d9d-b3f0-5c9f7d3e4b7c",
+    "Name": "Functional Fitness",
+    "Instructor": "Eric James",
+    "StartTimeAndDate": "2023-11-08T14:00:00",
+    "Duration": 55,
+    "GymId": "b7c3d8e2-f5a4-4b23-910f-6c9d2e3a7f4e"
+  },
+  {
+    "Id": "c5e7a2ff-6c4d-4c8d-c4b1-6a8e5f2d9c7a",
+    "Name": "Dance Cardio",
+    "Instructor": "Olivia Smith",
+    "StartTimeAndDate": "2023-11-08T15:30:00",
+    "Duration": 60,
+    "GymId": "b7c3d8e2-f5a4-4b23-910f-6c9d2e3a7f4e"
+  },
+  {
+    "Id": "d6f1b8ff-7e5f-4f7f-d6c4-7d9f8e4a5b6c",
+    "Name": "Morning Run",
+    "Instructor": "Chris Reed",
+    "StartTimeAndDate": "2023-11-09T06:30:00",
+    "Duration": 30,
+    "GymId": "c9d1e7f6-b4a3-4c87-92d2-8e1c4f9b2d7e"
+  },
+  {
+    "Id": "e7a2c4ff-8b6c-4d8e-e7d5-8e9d4b2f7a6e",
+    "Name": "Strength Circuit",
+    "Instructor": "Vanessa Miller",
+    "StartTimeAndDate": "2023-11-09T10:00:00",
+    "Duration": 60,
+    "GymId": "c9d1e7f6-b4a3-4c87-92d2-8e1c4f9b2d7e"
+  },
+  {
+    "Id": "f8b3d1ff-9c8d-4e7a-f9c6-9f8e3d5a6c7b",
+    "Name": "Core Stability",
+    "Instructor": "David Roberts",
+    "StartTimeAndDate": "2023-11-09T11:30:00",
+    "Duration": 40,
+    "GymId": "c9d1e7f6-b4a3-4c87-92d2-8e1c4f9b2d7e"
+  }
+]
