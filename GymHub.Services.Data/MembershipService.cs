@@ -22,9 +22,9 @@ namespace GymHub.Services.Data
 
         public async Task<bool> AddMembershipAsync(AddMembershipInputModel membership, Guid userId)
         {
-         
+            var isAdded =await context.FirstOrDefaultAsync(m => m.UserId == userId && m.GymId == membership.GymId);
 
-            if(context.FirstOrDefaultAsync(m=>m.UserId==userId && m.GymId==membership.GymId)!=null)
+            if (isAdded!=null)
             {
                 return false;
             }
