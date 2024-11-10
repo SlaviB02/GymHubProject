@@ -44,6 +44,7 @@ namespace GymHub.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddGymFormModel model)
         {
             if(!ModelState.IsValid)
@@ -69,6 +70,7 @@ namespace GymHub.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditGymFormModel model)
         {
             if (!ModelState.IsValid)

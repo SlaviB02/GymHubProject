@@ -40,6 +40,7 @@ namespace GymHub.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult>Add(AddClassViewModel model)
         {
             if (!ModelState.IsValid)
@@ -82,6 +83,7 @@ namespace GymHub.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditClassFormModel model)
         {
             bool isReleaseDateValid = DateTime

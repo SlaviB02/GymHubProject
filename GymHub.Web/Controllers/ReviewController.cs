@@ -27,6 +27,7 @@ namespace GymHub.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddReviewInputModel model,string Id)
         {
             if (!ModelState.IsValid)
@@ -98,6 +99,7 @@ namespace GymHub.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult>Edit(EditReviewModel model)
         {
             if (!ModelState.IsValid)
