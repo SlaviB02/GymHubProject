@@ -119,7 +119,7 @@ namespace GymHub.Services.Data
         {
             var list= await ClassContext.GetAllAttached()
                 .Include(c=>c.ClassesUsers)
-                .Where(c=>c.ClassesUsers.Any(cu=>cu.UserId==userId))
+                .Where(c=>c.ClassesUsers.Any(cu=>cu.UserId==userId) && c.isDeleted==false)
                 .Select(c=>new UserClassViewModel
                 {  
                     Name=c.Name,
@@ -136,7 +136,9 @@ namespace GymHub.Services.Data
 
         public async Task<DeleteClassViewModel> GetDeleteModelAsync(Guid classId)
         {
-            var gymClass=await ClassContext.GetByIdAsync(classId);
+            var gymClass=await ClassContext.FirstOrDefaultAsync(c=>c.Id==classId && c.isDeleted==false);
+
+          
 
             DeleteClassViewModel model = new DeleteClassViewModel()
             {

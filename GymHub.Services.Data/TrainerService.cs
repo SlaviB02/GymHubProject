@@ -89,7 +89,7 @@ namespace GymHub.Services.Data
 
         public async Task<DeleteTrainerViewModel> GetDeleteModelAsync(Guid trainerId)
         {
-            var trainer=await context.GetByIdAsync(trainerId);
+            var trainer=await context.FirstOrDefaultAsync(t=>t.Id == trainerId && t.isDeleted==false);
 
             DeleteTrainerViewModel model = new DeleteTrainerViewModel()
             {

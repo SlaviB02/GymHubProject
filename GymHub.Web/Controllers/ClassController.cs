@@ -80,6 +80,11 @@ namespace GymHub.Web.Controllers
 
             var model = await ClassService.GetEditModelAsync(reviewId);
 
+            if(model == null)
+            {
+                return RedirectToAction("Manage");
+            }
+
 
             return View(model);
         }

@@ -29,6 +29,11 @@ namespace GymHub.Web.Controllers
 
             var model=await service.GetDetailsGymAsync(guidId);
 
+            if(model==null)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(model);
         }
         public async Task<IActionResult>Manage()
@@ -66,6 +71,11 @@ namespace GymHub.Web.Controllers
             }
 
             var model= await service.GetEditModelAsync(gymId); 
+
+            if(model==null)
+            {
+                return RedirectToAction("Manage");
+            }
 
             return View(model);
         }

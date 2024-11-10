@@ -67,6 +67,11 @@ namespace GymHub.Web.Controllers
 
             var model=await TrainerService.GetEditModelAsync(trainerId);
 
+            if(model == null)
+            {
+                return RedirectToAction("Manage");
+            }
+
             return View(model);
 
         }

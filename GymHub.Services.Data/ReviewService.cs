@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GymHub.Common.EntityValidation;
+using Review = GymHub.Data.Models.Review;
 
 namespace GymHub.Services.Data
 {
@@ -91,7 +93,7 @@ namespace GymHub.Services.Data
 
         public async Task<EditReviewModel> GetEditReviewModelAsync(Guid id)
         {
-            var review=await context.GetByIdAsync(id);
+            Review review = await context.FirstOrDefaultAsync(r => r.Id == id && r.IsDeleted == false);
 
             EditReviewModel model = new EditReviewModel()
             {
@@ -123,7 +125,7 @@ namespace GymHub.Services.Data
 
         public async Task<DeleteReveiwViewModel> GetDeleteModelAsync(Guid reviewId)
         {
-            var review= await context.GetByIdAsync(reviewId);
+            Review review = await context.FirstOrDefaultAsync(r => r.Id == reviewId && r.IsDeleted == false);
 
             DeleteReveiwViewModel model=new DeleteReveiwViewModel()
             {

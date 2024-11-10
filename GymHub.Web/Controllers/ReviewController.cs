@@ -118,6 +118,11 @@ namespace GymHub.Web.Controllers
             }
             var model=await service.GetEditReviewModelAsync(reviewId);
 
+            if (model == null)
+            {
+                return RedirectToAction("Manage");
+            }
+
             return View(model);
         }
         [HttpPost]

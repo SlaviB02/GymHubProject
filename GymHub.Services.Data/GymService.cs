@@ -86,7 +86,7 @@ namespace GymHub.Services.Data
 
         public async Task<DeleteGymModel> GetDeleteModelAsync(Guid gymId)
         {
-            var gym= await context.GetByIdAsync(gymId);
+            var gym= await context.FirstOrDefaultAsync(g=>g.Id == gymId && g.IsDeleted==false);
 
             DeleteGymModel model = new DeleteGymModel()
             {
