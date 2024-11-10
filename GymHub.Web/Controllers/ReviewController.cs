@@ -15,12 +15,6 @@ namespace GymHub.Web.Controllers
         {
             service= _service;
         }
-        public async Task<IActionResult> Index()
-        {
-            var list=await service.GetAllReviewsAsync();
-
-            return View(list);
-        }
         [HttpGet]
         public IActionResult Add()
         {
@@ -48,7 +42,7 @@ namespace GymHub.Web.Controllers
             await service.AddReviewAsync(model, userId,gymId);
 
            
-            return RedirectToAction("Index");
+            return RedirectToAction("ReviewsForGym",new {id=gymId});
 
 
         }
