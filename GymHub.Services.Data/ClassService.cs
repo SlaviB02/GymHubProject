@@ -134,6 +134,19 @@ namespace GymHub.Services.Data
             return list;
         }
 
+        public async Task<DeleteClassViewModel> GetDeleteModelAsync(Guid classId)
+        {
+            var gymClass=await ClassContext.GetByIdAsync(classId);
+
+            DeleteClassViewModel model = new DeleteClassViewModel()
+            {
+                Name = gymClass.Name,
+                Id = gymClass.Id,
+            };
+
+            return model;
+        }
+
         public async Task<EditClassFormModel> GetEditModelAsync(Guid classId)
         {
             var gymClass = await ClassContext.FirstOrDefaultAsync(c => c.isDeleted == false && c.Id == classId);

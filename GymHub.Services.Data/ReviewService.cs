@@ -120,5 +120,18 @@ namespace GymHub.Services.Data
 
             return res;
         }
+
+        public async Task<DeleteReveiwViewModel> GetDeleteModelAsync(Guid reviewId)
+        {
+            var review= await context.GetByIdAsync(reviewId);
+
+            DeleteReveiwViewModel model=new DeleteReveiwViewModel()
+            {
+                Title=review.Title,
+                Id=review.Id
+            };
+
+            return model;
+        }
     }
 }

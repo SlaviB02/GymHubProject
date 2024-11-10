@@ -23,5 +23,7 @@ namespace GymHub.Services.Data.Interfaces
 
         Task<bool>UnsignUserFromClassAsync(Guid userId, Guid classId);
 
+        Task<DeleteClassViewModel>GetDeleteModelAsync(Guid classId);
+
     }
 }

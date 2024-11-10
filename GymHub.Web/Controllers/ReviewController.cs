@@ -1,4 +1,6 @@
-﻿using GymHub.Services.Data.Interfaces;
+﻿using GymHub.Services.Data;
+using GymHub.Services.Data.Interfaces;
+using GymHub.Web.ViewModels.Class;
 using GymHub.Web.ViewModels.Review;
 using Microsoft.AspNetCore.Mvc;
 
@@ -63,19 +65,39 @@ namespace GymHub.Web.Controllers
 
             return View(list);
         }
-        public async Task<IActionResult>Delete(string Id)
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
         {
-            bool isValidGuid = Guid.TryParse(Id, out Guid reviewId);
+            bool isValidGuid = Guid.TryParse(id, out Guid reviewId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
+            DeleteReveiwViewModel? model = await service.GetDeleteModelAsync(reviewId);
+
+
+            if (model == null)
+            {
+                return RedirectToAction("Manage");
+            }
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            bool isValidGuid = Guid.TryParse(id, out Guid reviewId);
             if (!isValidGuid)
             {
                 return BadRequest();
             }
 
-          var res=await service.DeleteReviewAsync(reviewId);
+            bool res = await service.DeleteReviewAsync(reviewId);
 
-            if(res==false)
+            if (res == false)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Manage");
             }
 
             return RedirectToAction("Manage");

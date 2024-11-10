@@ -20,5 +20,7 @@ namespace GymHub.Services.Data.Interfaces
         Task<bool>EditTrainerAsync(EditTrainerViewModel model);
 
         Task<bool>DeleteTrainerAsync(Guid trainerId);
+
+        Task<DeleteTrainerViewModel>GetDeleteModelAsync(Guid trainerId);
     }
 }

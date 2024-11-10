@@ -122,9 +122,8 @@ namespace GymHub.Services.Data
 
 
 
-#pragma warning disable CS8603 // Possible null reference return.
-            return model;
-#pragma warning restore CS8603 // Possible null reference return.
+            return model!;
+
         }
 
         public async Task<EditGymFormModel> GetEditModelAsync(Guid gymId)
@@ -147,7 +146,7 @@ namespace GymHub.Services.Data
                 };
 
             }
-            return model;
+            return model!;
         }
 
         public async Task<IEnumerable<GymNamesViewModel>> GetGymNamesAsync()

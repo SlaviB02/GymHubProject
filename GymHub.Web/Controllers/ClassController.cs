@@ -1,6 +1,7 @@
 ﻿using GymHub.Services.Data;
 using GymHub.Services.Data.Interfaces;
 using GymHub.Web.ViewModels.Class;
+using GymHub.Web.ViewModels.Gym;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
@@ -101,6 +102,7 @@ namespace GymHub.Web.Controllers
             return RedirectToAction("Manage");
 
         }
+        [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
             bool isValidGuid = Guid.TryParse(id, out Guid classId);
@@ -108,10 +110,32 @@ namespace GymHub.Web.Controllers
             {
                 return BadRequest();
             }
+            DeleteClassViewModel? model = await ClassService.GetDeleteModelAsync(classId);
 
-           await ClassService.DeleteClassAsync(classId);
 
-        
+            if (model == null)
+            {
+                return RedirectToAction("Manage");
+            }
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            bool isValidGuid = Guid.TryParse(id, out Guid classId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
+
+            bool res = await ClassService.DeleteClassAsync(classId);
+
+            if (res == false)
+            {
+                return RedirectToAction("Manage");
+            }
 
             return RedirectToAction("Manage");
         }
