@@ -110,7 +110,8 @@ namespace GymHub.Services.Data
             DeleteGymModel model = new DeleteGymModel()
             {
                 Name= gym.Name,
-                Id= gymId
+                Id= gymId,
+                Address= gym.Address,
             };
 
             return model;
