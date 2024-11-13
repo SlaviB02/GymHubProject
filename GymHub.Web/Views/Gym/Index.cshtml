@@ -5,7 +5,16 @@
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <label>Find by name: <input type="text" name="searchText" value="@ViewData["SearchText"]" /></label>
+            <input type="submit" value="Search" class="btn btn-secondary"/> 
+            <a asp-action="Index" class="btn btn-secondary m-1">Back to Full List</a>
+        </p>
+    </div>
+</form>
 
 <div class="text-center row">
     @foreach (var e in Model)

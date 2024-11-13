@@ -84,6 +84,25 @@ namespace GymHub.Services.Data
             return gyms;
         }
 
+        public async Task<IEnumerable<AllGymViewModel>> GetAllGymsBySearchAsync(string text)
+        {
+            var gyms = await context
+               .GetAllAttached()
+               .Where(g => !g.IsDeleted && g.Name.Contains(text))
+               .Select(e => new AllGymViewModel()
+               {
+                   Name = e.Name,
+                   Address = e.Address,
+                   ImageUrl = e.ImageUrl,
+                   OpeningHour = e.OpeningHour,
+                   ClosingHour = e.ClosingHour,
+                   Id = e.Id,
+               })
+               .ToListAsync();
+
+            return gyms;
+        }
+
         public async Task<DeleteGymModel> GetDeleteModelAsync(Guid gymId)
         {
             var gym= await context.FirstOrDefaultAsync(g=>g.Id == gymId && g.IsDeleted==false);
