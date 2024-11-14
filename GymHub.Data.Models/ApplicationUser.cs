@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using static GymHub.Common.EntityValidation.ApplicationUser;
 
 namespace GymHub.Data.Models
 {
@@ -13,5 +11,15 @@ namespace GymHub.Data.Models
         {
             this.Id = Guid.NewGuid();
         }
+
+        [Required]
+        [StringLength(FirstNameMaxLength)]
+        [Comment("The First name of the user")]
+        public string FirstName { get; set; } = null!;
+
+        [Required]
+        [StringLength(LastNameMaxLength)]
+        [Comment("The Last name of the user")]
+        public string LastName { get; set; } = null!;
     }
 }

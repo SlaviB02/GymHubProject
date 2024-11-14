@@ -69,6 +69,15 @@
             public const int InstructorMinLength = 3;
             public const int InstructorMaxLength = 50;
         }
+
+        public static class ApplicationUser
+        {
+            public const int FirstNameMinLength = 3;
+            public const int FirstNameMaxLength = 40;
+
+            public const int LastNameMinLength = 3;
+            public const int LastNameMaxLength = 40;
+        }
         
 
     }

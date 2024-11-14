@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using static GymHub.Common.EntityValidation.ApplicationUser;
 
 namespace GymHub.Web.Areas.Identity.Pages.Account
 {
@@ -92,12 +93,22 @@ namespace GymHub.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [MinLength(FirstNameMinLength)]
+            [MaxLength(FirstNameMaxLength)]
+            public string FirstName { get; set; } = null!;
+
+            [Required]
+            [MinLength(LastNameMinLength)]
+            [MaxLength(LastNameMaxLength)]
+            public string LastName { get; set; } = null!;
+       
         }
 
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task OnGetAsync(string returnUrl = null)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
         {
             ReturnUrl = returnUrl;
           
@@ -112,8 +123,13 @@ namespace GymHub.Web.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-               
+
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                
 
                 if (result.Succeeded)
                 {
