@@ -15,10 +15,6 @@ namespace GymHub.Web.ViewModels.Membership
 
         public required string StartDate {  get; set; }
 
-        public required string FirstName {  get; set; }
-
-        public required string LastName { get; set; }
-
         public required string GymName {  get; set; }
     }
 }

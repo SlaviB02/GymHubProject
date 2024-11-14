@@ -56,8 +56,6 @@ namespace GymHub.Services.Data
                 .Where(x => x.UserId == userId)
                 .Select(m=>new AllMembershipsViewModel()
                 {
-                    FirstName = m.User.FirstName,
-                    LastName = m.User.LastName,
                     GymName=m.Gym.Name,
                     StartDate=m.StartDate.ToString(DateOnlyFormat),
                     Type = m.Type.ToString(),
