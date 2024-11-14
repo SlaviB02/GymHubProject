@@ -32,16 +32,6 @@ namespace GymHub.Data.Models
         public string PhoneNumber { get; set; } = null!;
 
         [Required]
-        [StringLength(FirstNameMaxLength)]
-        [Comment("First name of the person")]
-        public string FirstName { get; set; } = null!;
-
-        [Required]
-        [StringLength(LastNameMaxLength)]
-        [Comment("Last name of the person")]
-        public string LastName { get; set; } = null!;
-
-        [Required]
         [Comment("The unique identifier of the User that made the membership")]
         public Guid UserId { get; set; }
 

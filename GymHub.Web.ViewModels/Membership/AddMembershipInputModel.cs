@@ -20,17 +20,6 @@ namespace GymHub.Web.ViewModels.Membership
 
         public string PhoneNumber { set; get; } = null!;
 
-        [Required]
-        [MinLength(FirstNameMinLength)]
-        [MaxLength(FirstNameMaxLength)]
-
-        public string FirstName { get; set; } = null!;
-
-        [Required]
-        [MinLength(LastNameMinLength)]
-        [MaxLength(LastNameMaxLength)]
-
-        public string LastName { get; set; } = null!;
 
         public IEnumerable<string>? Types { get; set; }
 

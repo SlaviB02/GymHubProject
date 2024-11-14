@@ -32,8 +32,6 @@ namespace GymHub.Services.Data
             Membership m = new Membership()
             {
                 UserId = userId,
-                FirstName = membership.FirstName,
-                LastName = membership.LastName,
                 PhoneNumber = membership.PhoneNumber,
                 StartDate = DateTime.Parse(membership.StartDate),
                 Type = (MembershipType)Enum.Parse(typeof(MembershipType), membership.Type),
@@ -58,8 +56,8 @@ namespace GymHub.Services.Data
                 .Where(x => x.UserId == userId)
                 .Select(m=>new AllMembershipsViewModel()
                 {
-                    FirstName = m.FirstName,
-                    LastName = m.LastName,
+                    FirstName = m.User.FirstName,
+                    LastName = m.User.LastName,
                     GymName=m.Gym.Name,
                     StartDate=m.StartDate.ToString(DateOnlyFormat),
                     Type = m.Type.ToString(),
