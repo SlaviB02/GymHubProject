@@ -1,9 +1,6 @@
 using GymHub.Data;
 using GymHub.Data.Models;
-using GymHub.Data.Repository;
-using GymHub.Data.Repository.Interfaces;
-using GymHub.Services.Data;
-using GymHub.Services.Data.Interfaces;
+using GymHub.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,20 +30,9 @@ builder.Services.ConfigureApplicationCookie(cfg =>
 });
 
 
+builder.Services.RegisterRepositories();
 
-
-builder.Services.AddScoped<IRepository<Gym>, Repository<Gym>>();
-builder.Services.AddScoped<IRepository<Membership>, Repository<Membership>>();
-builder.Services.AddScoped<IRepository<Review>, Repository<Review>>();
-builder.Services.AddScoped<IRepository<Class>,Repository<Class>>();
-builder.Services.AddScoped<IRepository<ClassUser>, Repository<ClassUser>>();
-builder.Services.AddScoped<IRepository<Trainer>, Repository<Trainer>>();
-
-builder.Services.AddScoped<IGymService, GymService>();
-builder.Services.AddScoped<IMembershipService, MembershipService>();
-builder.Services.AddScoped<IReviewService, ReviewService>();
-builder.Services.AddScoped<IClassService, ClassService>();
-builder.Services.AddScoped<ITrainerService, TrainerService>();
+builder.Services.RegisterServices();
 
 builder.Services.AddControllersWithViews();
 

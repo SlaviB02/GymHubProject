@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHub.Common", "GymHub.Com
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{54064040-5596-4A27-B180-B7A0737564BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Services.Data", "GymHub.Services.Data\GymHub.Services.Data.csproj", "{5CD1C901-CB13-44DC-BA48-1B369BC90872}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHub.Services.Data", "GymHub.Services.Data\GymHub.Services.Data.csproj", "{5CD1C901-CB13-44DC-BA48-1B369BC90872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Web.Infrastructure", "GymHub.Web.Infrastructure\GymHub.Web.Infrastructure.csproj", "{39D01EBE-B71D-4610-9EDC-2A8CA097E468}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5CD1C901-CB13-44DC-BA48-1B369BC90872}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CD1C901-CB13-44DC-BA48-1B369BC90872}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CD1C901-CB13-44DC-BA48-1B369BC90872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D01EBE-B71D-4610-9EDC-2A8CA097E468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D01EBE-B71D-4610-9EDC-2A8CA097E468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D01EBE-B71D-4610-9EDC-2A8CA097E468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D01EBE-B71D-4610-9EDC-2A8CA097E468}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{0E771AF6-6E74-4D31-A445-88B590348222} = {E52ABD00-3494-4358-8BAF-5C1B768F58E5}
 		{846F5275-EFE3-4845-AF11-04BDA1D8088A} = {8BEF1B7A-BB13-4FCF-A915-54671F9556DD}
 		{5CD1C901-CB13-44DC-BA48-1B369BC90872} = {54064040-5596-4A27-B180-B7A0737564BE}
+		{39D01EBE-B71D-4610-9EDC-2A8CA097E468} = {8BEF1B7A-BB13-4FCF-A915-54671F9556DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5446174-65E3-458F-8144-1149034F1641}
