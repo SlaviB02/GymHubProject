@@ -1,16 +1,12 @@
-﻿using GymHub.Data.Models;
-using GymHub.Data.Repository;
+﻿
+using GymHub.Data.Models;
 using GymHub.Data.Repository.Interfaces;
 using GymHub.Services.Data.Interfaces;
 using GymHub.Web.ViewModels.Review;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static GymHub.Common.EntityValidation;
-using Review = GymHub.Data.Models.Review;
+
+using static GymHub.Common.EntityValidation.Review;
+
 
 namespace GymHub.Services.Data
 {
@@ -51,6 +47,7 @@ namespace GymHub.Services.Data
                    UserName = r.User.FirstName+" "+r.User.LastName,
                    ReviewId=r.Id,
                    Rating = r.Rating,
+                   Name=r.User.UserName!
                })
                .ToListAsync();
 
