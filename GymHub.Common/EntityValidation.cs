@@ -29,6 +29,9 @@
 
             public const int MainBodyMinLength = 20;
             public const int MainBodyMaxLength = 500;
+
+            public const double RatingMin = 0;
+            public const double RatingMax = 10.0;
         }
 
         public static class Membership

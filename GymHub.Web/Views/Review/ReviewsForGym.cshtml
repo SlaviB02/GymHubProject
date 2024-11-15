@@ -9,9 +9,8 @@
         <div class="card col-4" style="width: 20rem; ">
             <div class="card-body">
                 <h3 class="card-title mt-1">@e.Title </h3>
-                <br />
                 <p class="card-title mt-1">@e.Body</p>
-                <br />
+                <p class="card-title mt-1">Rating: @e.Rating</p>
                 <p class="fw-bold"><span class="fw-bold">By: </span>@e.UserName</p>
                 @if (User?.Identity?.Name == @e.UserName)
                 {

@@ -27,6 +27,9 @@ namespace GymHub.Data.Models
         [Comment("The MainBody of the Review")]
         public string MainBody { get; set; } = null!;
 
+        [Required]
+        public double Rating {  get; set; }
+
         public bool IsDeleted { get; set; }
 
         [Required]

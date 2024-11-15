@@ -14,6 +14,8 @@ namespace GymHub.Web.ViewModels.Review
 
         public required string UserName {  get; set; }
 
+        public required double Rating {  get; set; }
+
         public string? GymName { get; set; }
 
         public required Guid ReviewId { get; set; }

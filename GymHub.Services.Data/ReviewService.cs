@@ -30,7 +30,8 @@ namespace GymHub.Services.Data
                 Title = model.Title,
                 MainBody = model.MainBody,
                 UserId = userId,
-                GymId = GymId
+                GymId = GymId,
+                Rating = model.Rating,
             };
 
             await context.AddAsync(review);
@@ -48,7 +49,8 @@ namespace GymHub.Services.Data
                    Title = r.Title,
                    Body = r.MainBody,
                    UserName = r.User.UserName!,
-                   ReviewId=r.Id
+                   ReviewId=r.Id,
+                   Rating = r.Rating,
                })
                .ToListAsync();
 
@@ -66,7 +68,8 @@ namespace GymHub.Services.Data
                     Body=r.MainBody,
                     UserName=r.User.UserName!,
                     GymName=r.Gym.Name,
-                    ReviewId=r.Id
+                    ReviewId=r.Id,
+                    Rating=r.Rating,
                 })
                 .ToListAsync();
 
@@ -101,7 +104,8 @@ namespace GymHub.Services.Data
                 Body = review.MainBody,
                 Id = id,
                 GymId=review.GymId, 
-                UserId=review.UserId
+                UserId=review.UserId,
+                Rating = review.Rating,
             };
 
             return model;
@@ -109,6 +113,7 @@ namespace GymHub.Services.Data
 
         public async Task<bool> UpdateReviewAsync(EditReviewModel model)
         {
+
             
             Review rev = new Review()
             {
@@ -116,7 +121,8 @@ namespace GymHub.Services.Data
                 MainBody = model.Body,
                 Id = model.Id,
                 GymId=model.GymId,
-                UserId=model.UserId
+                UserId=model.UserId,
+                Rating=model.Rating
             };
             bool res = await context.UpdateAsync(rev);
 

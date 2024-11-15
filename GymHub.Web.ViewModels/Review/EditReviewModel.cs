@@ -18,6 +18,9 @@ namespace GymHub.Web.ViewModels.Review
         [MaxLength(MainBodyMaxLength)]
         public string Body { get; set; } = null!;
 
+        [Required]
+        public double Rating {  get; set; }
+
         public required Guid Id { get; set; }
 
         public required Guid UserId {  get; set; }

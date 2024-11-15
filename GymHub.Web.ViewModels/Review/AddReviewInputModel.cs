@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,5 +21,9 @@ namespace GymHub.Web.ViewModels.Review
         [MaxLength(MainBodyMaxLength)]
 
         public string MainBody { get; set; } = null!;
+
+        [Required]
+        [Range(RatingMin, RatingMax)]
+        public double Rating {  get; set; }
     }
 }
