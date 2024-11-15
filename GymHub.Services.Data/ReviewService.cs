@@ -48,7 +48,7 @@ namespace GymHub.Services.Data
                {
                    Title = r.Title,
                    Body = r.MainBody,
-                   UserName = r.User.UserName!,
+                   UserName = r.User.FirstName+" "+r.User.LastName,
                    ReviewId=r.Id,
                    Rating = r.Rating,
                })
@@ -66,8 +66,8 @@ namespace GymHub.Services.Data
                 {
                     Title=r.Title,
                     Body=r.MainBody,
-                    UserName=r.User.UserName!,
-                    GymName=r.Gym.Name,
+                    UserName= r.User.FirstName + " " + r.User.LastName,
+                    GymName =r.Gym.Name,
                     ReviewId=r.Id,
                     Rating=r.Rating,
                 })
