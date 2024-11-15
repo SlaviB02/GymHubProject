@@ -1,6 +1,16 @@
 ﻿@model GymDetailsViewModel
 
-<img src="@Model.ImageUrl" class="card-img-top img-fluid" style=" width: 400px; height: 400px; object-fit:contain;" />
+
+
+@if (!string.IsNullOrEmpty(Model.ImageUrl))
+{
+    <img src="@Model.ImageUrl" class="card-img-top img-fluid" style="height: 400px;width:400px; object-fit: cover;">
+}
+else
+{
+    <img src="~/images/DefaultGym.jfif" class="card-img-top img-fluid" style="height: 400px;width:400px; object-fit: cover;" alt="Placeholder Image">
+}
+
 
 <h2>@Model.Name</h2>
 
@@ -8,13 +18,13 @@
 
 <p><strong>Description:</strong> @Model.Description</p>
 
-<p><span>Working Hours: </span>@Model.OpeningHour h - @Model.ClosingHour h</p>
+<p><strong>Working Hours: </strong>@Model.OpeningHour h - @Model.ClosingHour h</p>
 
 <a asp-action="Index" class="btn btn-primary">Back to Gyms</a>
 
 <a asp-action="Manage" class="btn btn-primary">Back to Manage Gyms</a>
 
-<a asp-controller="Trainer" asp-action="GetTrainersByGym" asp-route-id="@Model.Id" class="btn btn-secondary">Trainers in Gym</a>
+<a asp-controller="Trainer" asp-action="GetTrainersByGym" asp-route-id="@Model.Id" class="btn btn-primary">Trainers in Gym</a>
 
 
 
