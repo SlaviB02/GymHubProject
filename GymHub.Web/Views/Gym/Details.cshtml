@@ -20,9 +20,14 @@ else
 
 <p><strong>Working Hours: </strong>@Model.OpeningHour h - @Model.ClosingHour h</p>
 
-<a asp-action="Index" class="btn btn-primary">Back to Gyms</a>
-
-<a asp-action="Manage" class="btn btn-primary">Back to Manage Gyms</a>
+@if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+{
+    <a asp-area="Admin" asp-action="Manage" class="btn btn-primary">Back to Gyms</a>
+}
+else
+{
+    <a asp-action="Index" class="btn btn-primary">Back to Gyms</a>
+}
 
 <a asp-controller="Trainer" asp-action="GetTrainersByGym" asp-route-id="@Model.Id" class="btn btn-primary">Trainers in Gym</a>
 

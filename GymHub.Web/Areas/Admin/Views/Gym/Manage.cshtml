@@ -27,7 +27,7 @@
                 <td>@gym.Address</td>
                 <td>@gym.OpeningHour - @gym.ClosingHour</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@gym.Id" class="btn btn-info btn-sm">Details</a>
+                    <a asp-area="" asp-action="Details" asp-route-id="@gym.Id" class="btn btn-info btn-sm">Details</a>
                     <a asp-action="Edit" asp-route-id="@gym.Id" class="btn btn-primary btn-sm">Edit</a>
                     <a asp-action="Delete" asp-route-id="@gym.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
