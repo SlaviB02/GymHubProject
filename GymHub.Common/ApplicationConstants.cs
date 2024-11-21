@@ -9,7 +9,7 @@ namespace GymHub.Common
     public static class ApplicationConstants
     {
         public const string DateOnlyFormat = "yyyy-MM-dd";
-        public const string DateTimeFormat = "dd/MM/yyyy HH:mm";
+        public const string DateAndTimeFormat = "dd/MM/yyyy HH:mm";
 
     }
 }

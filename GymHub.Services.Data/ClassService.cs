@@ -25,7 +25,7 @@ namespace GymHub.Services.Data
         public async Task<bool> AddClassAsync(AddClassViewModel model)
         {
             bool isReleaseDateValid = DateTime
-             .TryParseExact(model.DateAndTime, DateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
+             .TryParseExact(model.DateAndTime, DateAndTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
                  out DateTime dateTime);
             if (!isReleaseDateValid)
             {
@@ -69,7 +69,7 @@ namespace GymHub.Services.Data
             {
                 Name=model.Name,
                 Duration = model.Duration,
-                StartTimeAndDate=DateTime.ParseExact(model.DateAndTime,DateTimeFormat,CultureInfo.InvariantCulture),
+                StartTimeAndDate=DateTime.ParseExact(model.DateAndTime,DateAndTimeFormat,CultureInfo.InvariantCulture),
                 Instructor=model.Instructor,
                 Id=model.Id,
                 GymId=model.GymId,
@@ -88,7 +88,7 @@ namespace GymHub.Services.Data
                {
                    Name = c.Name,
                    Duration = c.Duration,
-                   StartTimeAndDate = c.StartTimeAndDate.ToString(DateTimeFormat),
+                   StartTimeAndDate = c.StartTimeAndDate.ToString(DateAndTimeFormat),
                    Id = c.Id,
                    Instructor = c.Instructor,
                    GymName=c.Gym.Name,
@@ -106,7 +106,7 @@ namespace GymHub.Services.Data
                 {
                     Name = c.Name,
                     Duration = c.Duration,
-                    StartTimeAndDate = c.StartTimeAndDate.ToString(DateTimeFormat),
+                    StartTimeAndDate = c.StartTimeAndDate.ToString(DateAndTimeFormat),
                     Id = c.Id,
                     Instructor = c.Instructor,
                 })
@@ -124,7 +124,7 @@ namespace GymHub.Services.Data
                 {  
                     Name=c.Name,
                     Duration=c.Duration,
-                    DateAndTime=c.StartTimeAndDate.ToString(DateTimeFormat),
+                    DateAndTime=c.StartTimeAndDate.ToString(DateAndTimeFormat),
                     Instructor=c.Instructor,
                     GymName=c.Gym.Name,
                     Id=c.Id,
@@ -157,7 +157,7 @@ namespace GymHub.Services.Data
             {
                 Name= gymClass.Name,
                 Duration = gymClass.Duration,
-                DateAndTime=gymClass.StartTimeAndDate.ToString(DateTimeFormat),
+                DateAndTime=gymClass.StartTimeAndDate.ToString(DateAndTimeFormat),
                 Instructor = gymClass.Instructor,
                 Id= classId,
                 GymId=gymClass.GymId
