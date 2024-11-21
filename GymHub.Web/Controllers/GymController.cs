@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GymHub.Web.Controllers
 {
-    [Authorize]
+  
     public class GymController : BaseController
     {
         private readonly IGymService service;

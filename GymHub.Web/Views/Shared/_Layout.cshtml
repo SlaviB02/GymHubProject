@@ -21,40 +21,46 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @if (User?.Identity?.IsAuthenticated==true && User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" href="#" id="managerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Manager
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="managerDropdown">
-                                    <li>
-                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Gym" asp-action="Manage">Manage Gyms</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Review" asp-action="Manage">Manage Reviews</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Class" asp-action="Manage">Manage Classes</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Trainer" asp-action="Manage">Manage Trainers</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Gym" asp-action="Index">Gyms</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Class" asp-action="MyClasses">My Classes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Membership" asp-action="Index">My Membeships</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Membership" asp-action="Add">Make Membership</a>
-                        </li>
+                        @if (User?.Identity?.IsAuthenticated==true)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="managerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Manage
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="managerDropdown">
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Gym" asp-action="Manage">Manage Gyms</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Review" asp-action="Manage">Manage Reviews</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Class" asp-action="Manage">Manage Classes</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Trainer" asp-action="Manage">Manage Trainers</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Class" asp-action="MyClasses">My Classes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Membership" asp-action="Index">My Membeships</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Membership" asp-action="Add">Make Membership</a>
+                            </li>
+                        }
+                       
+                        
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

@@ -2,10 +2,12 @@
 using GymHub.Services.Data.Interfaces;
 using GymHub.Web.ViewModels.Class;
 using GymHub.Web.ViewModels.Review;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymHub.Web.Controllers
 {
+    [Authorize]
     public class ReviewController : BaseController
     {
 
@@ -46,6 +48,7 @@ namespace GymHub.Web.Controllers
 
 
         }
+        [AllowAnonymous]
         public async Task<IActionResult> ReviewsForGym(string Id)
         {
 
