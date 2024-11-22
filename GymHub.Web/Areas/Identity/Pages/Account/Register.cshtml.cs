@@ -29,16 +29,19 @@ namespace GymHub.Web.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly ILogger<RegisterModel> _logger;
+        private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole<Guid>> roleManager,
             ILogger<RegisterModel> logger)
         {
             _userManager = userManager;
             _userStore = userStore;
             _signInManager = signInManager;
             _logger = logger;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -135,6 +138,14 @@ namespace GymHub.Web.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    var userRole=_roleManager.FindByNameAsync("User").Result;
+
+                    if (userRole != null)
+                    {
+                        IdentityResult roleResult = await _userManager.AddToRoleAsync(user, userRole.Name);
+                    }
+
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
