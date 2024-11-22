@@ -63,6 +63,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
+app.SeedRoles();
 
 
 app.MapAreaControllerRoute(
