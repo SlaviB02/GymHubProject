@@ -4,10 +4,11 @@ using GymHub.Web.ViewModels.Class;
 using GymHub.Web.ViewModels.Review;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static GymHub.Common.ApplicationConstants;
 
 namespace GymHub.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = AdminRoleName + "," + UserRoleName)]
     public class ReviewController : BaseController
     {
 

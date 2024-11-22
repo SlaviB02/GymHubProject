@@ -9,6 +9,7 @@ using static GymHub.Common.ApplicationConstants;
 
 namespace GymHub.Web.Controllers
 {
+    [Authorize(Roles = AdminRoleName + "," + UserRoleName)]
     public class ClassController : BaseController
     {
         private readonly IClassService ClassService;
@@ -19,6 +20,7 @@ namespace GymHub.Web.Controllers
             ClassService = _ClassService;
             GymService = _GymService;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> ClassesForGym(string id)
         {
 
@@ -33,7 +35,7 @@ namespace GymHub.Web.Controllers
             return View(list);
         }
        
-        [Authorize]
+       
         public async Task<IActionResult>MyClasses()
         {
             Guid userId= GetUserId();
@@ -42,7 +44,7 @@ namespace GymHub.Web.Controllers
 
             return View(list);
         }
-        [Authorize]
+        
         public async Task<IActionResult>SignUp(string id)
         {
            
@@ -62,7 +64,7 @@ namespace GymHub.Web.Controllers
 
             return RedirectToAction("MyClasses", new { id = userId });
         }
-        [Authorize]
+       
         public async Task<IActionResult>Cancel(string id)
         {
             bool isValidGuid = Guid.TryParse(id, out Guid classId);
