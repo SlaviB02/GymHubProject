@@ -5,11 +5,11 @@ using GymHub.Web.ViewModels.Gym;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
-using static GymHub.Common.ApplicationConstants;
+
 
 namespace GymHub.Web.Controllers
 {
-    [Authorize(Roles = AdminRoleName + "," + UserRoleName)]
+    [Authorize]
     public class ClassController : BaseController
     {
         private readonly IClassService ClassService;

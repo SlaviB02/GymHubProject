@@ -11,7 +11,6 @@ namespace GymHub.Common
         public const string DateOnlyFormat = "yyyy-MM-dd";
         public const string DateAndTimeFormat = "dd/MM/yyyy HH:mm";
         public const string AdminRoleName = "Admin";
-        public const string UserRoleName = "User";
 
     }
 }

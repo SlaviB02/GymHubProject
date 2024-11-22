@@ -8,7 +8,7 @@ using static GymHub.Common.ApplicationConstants;
 
 namespace GymHub.Web.Controllers
 {
-    [Authorize(Roles = AdminRoleName + "," + UserRoleName)]
+    [Authorize]
     public class ReviewController : BaseController
     {
 

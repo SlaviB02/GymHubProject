@@ -2,17 +2,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static GymHub.Common.ApplicationConstants;
 
 namespace GymHub.Web.Infrastructure.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
-        public static void SeedRoles(this IApplicationBuilder app)
+        public static void SeedAdmin(this IApplicationBuilder app)
         {
             using IServiceScope serviceScope = app.ApplicationServices.CreateAsyncScope();
             IServiceProvider serviceProvider = serviceScope.ServiceProvider;
@@ -22,20 +18,19 @@ namespace GymHub.Web.Infrastructure.Extensions
 
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            string[] roles = { "Admin","User" };
+           var roleName=AdminRoleName;
 
-            foreach (var role in roles)
-            {
-                var roleExists = roleManager.RoleExistsAsync(role).GetAwaiter().GetResult();
+           
+                var roleExists = roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult();
                 if (!roleExists)
                 {
-                    var result = roleManager.CreateAsync(new IdentityRole<Guid> { Name = role }).GetAwaiter().GetResult();
+                    var result = roleManager.CreateAsync(new IdentityRole<Guid> { Name = roleName }).GetAwaiter().GetResult();
                     if (!result.Succeeded)
                     {
-                        throw new Exception($"Failed to create role: {role}");
+                        throw new Exception($"Failed to create role: {roleName}");
                     }
                 }
-            }
+            
 
             CreateAdminUser(userManager);
 

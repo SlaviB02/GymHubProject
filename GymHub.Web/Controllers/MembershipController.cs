@@ -10,7 +10,7 @@ using static GymHub.Common.ApplicationConstants;
 
 namespace GymHub.Web.Controllers
 {
-    [Authorize(Roles =AdminRoleName+","+UserRoleName)]
+    [Authorize]
     public class MembershipController : BaseController
     {
         private readonly IMembershipService service;
