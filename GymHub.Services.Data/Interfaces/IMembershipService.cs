@@ -16,7 +16,7 @@ namespace GymHub.Services.Data.Interfaces
 
         IEnumerable<string> GetTypesNames();
 
-        Task CancelMembershipAsync(Guid Id);
+        Task<bool> CancelMembershipAsync(Guid Id);
 
         
     }

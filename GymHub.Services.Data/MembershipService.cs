@@ -43,10 +43,19 @@ namespace GymHub.Services.Data
               return true;
         }
 
-        public async Task CancelMembershipAsync(Guid Id)
+        public async Task<bool> CancelMembershipAsync(Guid Id)
         { 
+            var existingMembership=context.FirstOrDefaultAsync(m => m.Id==Id);
+
+            if (existingMembership==null)
+            {
+                return false;
+            }
+
 
             await context.DeleteByIdAsync(Id);
+
+            return true;
         }
 
         public async Task<IEnumerable<AllMembershipsViewModel>> GetAllMembershipsAsync(Guid userId)

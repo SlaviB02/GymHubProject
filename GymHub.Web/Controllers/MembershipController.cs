@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Security.Claims;
 
 using static GymHub.Common.ApplicationConstants;
+using static GymHub.Common.ErrorMessages;
 
 namespace GymHub.Web.Controllers
 {
@@ -71,16 +72,27 @@ namespace GymHub.Web.Controllers
 
             if(res!=true)
             {
+                TempData["Message"] = AlreadyHaveMembershipForGym;
                 return RedirectToAction("Index");
-                
             }
 
             return RedirectToAction("Index");
             
         }
-        public async Task<IActionResult>Cancel(Guid id)
+        public async Task<IActionResult>Cancel(string id)
         {
-           await service.CancelMembershipAsync(id);
+            bool isValidGuid = Guid.TryParse(id, out Guid membershipId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
+            var res= await service.CancelMembershipAsync(membershipId);
+
+            if (res!=true)
+            {
+                TempData["Message"] = DontHaveMembership;
+                return RedirectToAction("Index");
+            }
 
             return RedirectToAction("Index");
         }

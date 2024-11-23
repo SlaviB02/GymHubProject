@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
+using static GymHub.Common.ErrorMessages;
+
 
 namespace GymHub.Web.Controllers
 {
@@ -59,7 +61,8 @@ namespace GymHub.Web.Controllers
 
             if(res==false)
             {
-                return RedirectToAction("Index", "Gym");
+                TempData["Message"]=AlreadySignedForThisClass;
+                return RedirectToAction("MyClasses", new { id = userId });
             }
 
             return RedirectToAction("MyClasses", new { id = userId });
@@ -78,6 +81,7 @@ namespace GymHub.Web.Controllers
 
             if (res == false)
             {
+                TempData["Message"] = NotSignedForThisClass;
                 return RedirectToAction("MyClasses", new { id = userId });
             }
 
