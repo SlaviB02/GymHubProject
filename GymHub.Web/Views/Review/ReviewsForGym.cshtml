@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<AllReviewViewModel>
 
 <h2 class="text-center">Reviews for Gym</h2>
+<a asp-area="" asp-controller="Gym" asp-action="Index" class="btn mt-4 btn-primary">Back to Gyms</a>
 <hr />
 
 <div class="text-center row">
@@ -20,6 +21,7 @@
         </div>
     }
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

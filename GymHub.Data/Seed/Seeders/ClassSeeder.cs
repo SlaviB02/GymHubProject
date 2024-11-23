@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GymHub.Data.Seed
+namespace GymHub.Data.Seed.Seeders
 {
-    public class ClassSeed : IEntityTypeConfiguration<Class>
+    public class ClassSeeder : IEntityTypeConfiguration<Class>
     {
         public void Configure(EntityTypeBuilder<Class> builder)
         {
-            string inputJson = File.ReadAllText("../GymHub.Data/Seed/ClassSeed.json");
+            string inputJson = File.ReadAllText("../GymHub.Data/Seed/Files/Classes.json");
             List<Class> classes = JsonConvert.DeserializeObject<List<Class>>(inputJson)!;
 
 

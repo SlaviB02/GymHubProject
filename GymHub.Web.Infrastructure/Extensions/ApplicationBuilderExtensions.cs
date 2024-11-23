@@ -33,6 +33,7 @@ namespace GymHub.Web.Infrastructure.Extensions
             
 
             CreateAdminUser(userManager);
+            CreateUsers(userManager);
 
         }
 
@@ -74,6 +75,84 @@ namespace GymHub.Web.Infrastructure.Extensions
           
 
         }
+        private static void CreateUsers(UserManager<ApplicationUser> userManager)
+        {
+
+            var users = new[]
+    {
+        new
+        {
+            Id =Guid.Parse("69178581-3d61-4a35-b5c3-2403663b7734"),
+            Email = "user1@gymhub.com",
+            UserName = "user1@gymhub.com",
+            Password = "user123",
+            FirstName = "Jack",
+            LastName = "Red",
+        },
+        new
+        {
+            Id = Guid.Parse("bb75e197-5f40-4287-8746-09cd2112c4ff"),
+            Email = "user2@gymhub.com",
+            UserName = "user2@gymhub.com",
+            Password = "user123",
+            FirstName = "John",
+            LastName = "Doe",
+        },
+        new
+        {
+            Id = Guid.Parse("1d773456-8353-4d6c-9b36-414fe221d8a0"),
+            Email = "user3@gymhub.com",
+            UserName = "user3@gymhub.com",
+            Password = "user123",
+            FirstName = "Jane",
+            LastName = "Smith",
+        },
+        new
+        {
+            Id = Guid.Parse("5b3af4e7-4b0a-4fd7-86f1-435b036f6f01"),
+            Email = "user4@gymhub.com",
+            UserName = "user4@gymhub.com",
+            Password = "user123",
+            FirstName = "Alice",
+            LastName = "Brown",
+        },
+        new
+        {
+            Id = Guid.Parse("cd421621-1c3c-4cd4-a14b-1fe2f9f46ade"),
+            Email = "user5@gymhub.com",
+            UserName = "user5@gymhub.com",
+            Password = "user123",
+            FirstName = "Bob",
+            LastName = "Johnson",
+        },
+    };
+
+            foreach (var userInfo in users)
+            {
+
+                var userExists = userManager.FindByEmailAsync(userInfo.Email).GetAwaiter().GetResult();
+
+                if (userExists == null)
+                {
+                    var user = new ApplicationUser
+                    {
+                        Id = userInfo.Id,
+                        UserName = userInfo.UserName,
+                        Email = userInfo.Email,
+                        FirstName = userInfo.FirstName,
+                        LastName = userInfo.LastName
+                    };
+
+                    var createUserResult = userManager.CreateAsync(user, userInfo.Password).GetAwaiter().GetResult();
+                    if (!createUserResult.Succeeded)
+                    {
+                        throw new Exception($"Failed to create admin user: {user.Email}");
+                    }
+                }
+            }
+
+        }
+
 
     }
 }
