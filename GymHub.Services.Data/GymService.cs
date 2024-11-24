@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GymHub.Common.EntityValidation.Gym;
 
 namespace GymHub.Services.Data
 {
@@ -103,30 +104,35 @@ namespace GymHub.Services.Data
             return gyms;
         }
 
-        public async Task<DeleteGymModel> GetDeleteModelAsync(Guid gymId)
+        public async Task<DeleteGymModel?> GetDeleteModelAsync(Guid gymId)
         {
             var gym= await context.FirstOrDefaultAsync(g=>g.Id == gymId && g.IsDeleted==false);
 
-            DeleteGymModel model = new DeleteGymModel()
-            {
-                Name= gym.Name,
-                Id= gymId,
-                Address= gym.Address,
-            };
+            DeleteGymModel? model = null;
 
+            if (gym != null)
+            {
+
+               model = new DeleteGymModel()
+                {
+                    Name = gym.Name,
+                    Id = gymId,
+                    Address = gym.Address,
+                };
+
+            }
             return model;
         }
 
         public async Task<GymDetailsViewModel> GetDetailsGymAsync(Guid id)
         {
-           
             GymDetailsViewModel? model = null;
 
-            Gym? gym= await context.GetByIdAsync(id);
+            Gym gym= await context.FirstOrDefaultAsync(g => g.Id == id && g.IsDeleted == false);
 
 
 
-            if(gym!=null && gym.IsDeleted==false)
+            if (gym!=null)
             {
                 model = new GymDetailsViewModel
                 {
@@ -146,12 +152,12 @@ namespace GymHub.Services.Data
 
         }
 
-        public async Task<EditGymFormModel> GetEditModelAsync(Guid gymId)
+        public async Task<EditGymFormModel?> GetEditModelAsync(Guid gymId)
         {
-            var gym=await context.GetByIdAsync(gymId);
+            var gym= await context.FirstOrDefaultAsync(g => g.Id == gymId && g.IsDeleted == false);
             EditGymFormModel? model=null;
 
-            if (gym.IsDeleted == false)
+            if (gym!=null)
             {
 
                 model = new EditGymFormModel()

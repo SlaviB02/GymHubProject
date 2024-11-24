@@ -17,10 +17,10 @@ namespace GymHub.Services.Data.Interfaces
 
         Task<bool> DeleteReviewAsync(Guid reviewId);
 
-        Task<EditReviewModel> GetEditReviewModelAsync(Guid id);
+        Task<EditReviewModel?> GetEditReviewModelAsync(Guid id);
 
         Task<bool> UpdateReviewAsync(EditReviewModel model);
 
-        Task<DeleteReveiwViewModel> GetDeleteModelAsync(Guid reviewId);
+        Task<DeleteReveiwViewModel?> GetDeleteModelAsync(Guid reviewId);
     }
 }

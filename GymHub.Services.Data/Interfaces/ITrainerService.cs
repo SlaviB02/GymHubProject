@@ -15,12 +15,12 @@ namespace GymHub.Services.Data.Interfaces
 
         Task AddTrainerAsync(AddTrainerViewModel model);
 
-        Task<EditTrainerViewModel> GetEditModelAsync(Guid trainerId);
+        Task<EditTrainerViewModel?> GetEditModelAsync(Guid trainerId);
 
         Task<bool>EditTrainerAsync(EditTrainerViewModel model);
 
         Task<bool>DeleteTrainerAsync(Guid trainerId);
 
-        Task<DeleteTrainerViewModel>GetDeleteModelAsync(Guid trainerId);
+        Task<DeleteTrainerViewModel?>GetDeleteModelAsync(Guid trainerId);
     }
 }

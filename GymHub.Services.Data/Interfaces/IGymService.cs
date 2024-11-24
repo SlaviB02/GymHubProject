@@ -19,13 +19,13 @@ namespace GymHub.Services.Data.Interfaces
 
         Task AddGymAsync(AddGymFormModel model);
 
-        Task<EditGymFormModel> GetEditModelAsync(Guid gymId);
+        Task<EditGymFormModel?> GetEditModelAsync(Guid gymId);
 
         Task<bool> UpdateGymAsync(EditGymFormModel model);
 
         Task<bool> DeleteGymAsync(Guid gymId);
 
-        Task<DeleteGymModel> GetDeleteModelAsync(Guid gymId);
+        Task<DeleteGymModel?> GetDeleteModelAsync(Guid gymId);
 
 
     }

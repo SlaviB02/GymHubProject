@@ -1,6 +1,7 @@
 ﻿using GymHub.Services.Data.Interfaces;
 using GymHub.Web.ViewModels.Review;
 using Microsoft.AspNetCore.Mvc;
+using static GymHub.Common.ErrorMessages;
 
 namespace GymHub.Web.Areas.Admin.Controllers
 {
@@ -27,6 +28,7 @@ namespace GymHub.Web.Areas.Admin.Controllers
 
             if (model == null)
             {
+                TempData["Message"] = InvalidIdMessage;
                 return RedirectToAction("Manage");
             }
 
@@ -69,6 +71,7 @@ namespace GymHub.Web.Areas.Admin.Controllers
 
             if (model == null)
             {
+                TempData["Message"] = InvalidIdMessage;
                 return RedirectToAction("Manage");
             }
 

@@ -87,32 +87,47 @@ namespace GymHub.Services.Data
             return trainers;
         }
 
-        public async Task<DeleteTrainerViewModel> GetDeleteModelAsync(Guid trainerId)
+        public async Task<DeleteTrainerViewModel?> GetDeleteModelAsync(Guid trainerId)
         {
             var trainer=await context.FirstOrDefaultAsync(t=>t.Id == trainerId && t.isDeleted==false);
 
-            DeleteTrainerViewModel model = new DeleteTrainerViewModel()
+            DeleteTrainerViewModel? model = null;
+
+            if(trainer!=null)
             {
-                Name = trainer.FirstName + " " + trainer.LastName,
-                Id = trainer.Id
-            };
+                model = new DeleteTrainerViewModel()
+                {
+                    Name = trainer.FirstName + " " + trainer.LastName,
+                    Id = trainer.Id
+                };
+            }
+
+          
 
             return model;
         }
 
-        public async Task<EditTrainerViewModel> GetEditModelAsync(Guid trainerId)
+        public async Task<EditTrainerViewModel?> GetEditModelAsync(Guid trainerId)
         {
             var trainer=await context.FirstOrDefaultAsync(c=>c.Id == trainerId && c.isDeleted==false);
-            EditTrainerViewModel model = new EditTrainerViewModel()
+
+            EditTrainerViewModel? model = null;
+
+            if (trainer != null)
             {
-                FirstName= trainer.FirstName,
-                LastName= trainer.LastName,
-                PhoneNumber= trainer.PhoneNumber,
-                Email = trainer.Email,
-                Id = trainerId,
-                ImageUrl= trainer.ImageUrl,
-                GymId= trainer.GymId,
-            };
+
+                model = new EditTrainerViewModel()
+                {
+                    FirstName = trainer.FirstName,
+                    LastName = trainer.LastName,
+                    PhoneNumber = trainer.PhoneNumber,
+                    Email = trainer.Email,
+                    Id = trainerId,
+                    ImageUrl = trainer.ImageUrl,
+                    GymId = trainer.GymId,
+                };
+
+            }
 
             return model;
         }

@@ -91,19 +91,26 @@ namespace GymHub.Services.Data
             return true;
         }
 
-        public async Task<EditReviewModel> GetEditReviewModelAsync(Guid id)
+        public async Task<EditReviewModel?> GetEditReviewModelAsync(Guid id)
         {
             Review review = await context.FirstOrDefaultAsync(r => r.Id == id && r.IsDeleted == false);
 
-            EditReviewModel model = new EditReviewModel()
+            EditReviewModel? model = null;
+
+            if(review!=null)
             {
-                Title = review.Title,
-                Body = review.MainBody,
-                Id = id,
-                GymId=review.GymId, 
-                UserId=review.UserId,
-                Rating = review.Rating,
-            };
+                model = new EditReviewModel()
+                {
+                    Title = review.Title,
+                    Body = review.MainBody,
+                    Id = id,
+                    GymId = review.GymId,
+                    UserId = review.UserId,
+                    Rating = review.Rating,
+                };
+            }
+
+            
 
             return model;
         }
@@ -126,15 +133,22 @@ namespace GymHub.Services.Data
             return res;
         }
 
-        public async Task<DeleteReveiwViewModel> GetDeleteModelAsync(Guid reviewId)
+        public async Task<DeleteReveiwViewModel?> GetDeleteModelAsync(Guid reviewId)
         {
             Review review = await context.FirstOrDefaultAsync(r => r.Id == reviewId && r.IsDeleted == false);
 
-            DeleteReveiwViewModel model=new DeleteReveiwViewModel()
+            DeleteReveiwViewModel? model = null;
+
+            if (review != null)
             {
-                Title=review.Title,
-                Id=review.Id
-            };
+
+
+                model = new DeleteReveiwViewModel()
+                {
+                    Title = review.Title,
+                    Id = review.Id
+                };
+            }
 
             return model;
         }
