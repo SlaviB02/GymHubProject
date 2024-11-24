@@ -5,6 +5,7 @@ using GymHub.Web.ViewModels.Review;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static GymHub.Common.ApplicationConstants;
+using static GymHub.Common.ErrorMessages;
 
 namespace GymHub.Web.Controllers
 {
@@ -71,8 +72,15 @@ namespace GymHub.Web.Controllers
                 return BadRequest();
             }
 
-            await service.DeleteReviewAsync(reviewId);
+            var userId=GetUserId();
 
+           bool res= await service.UserDeleteReview(userId,reviewId);
+
+            if(res==false)
+            {
+                TempData["Message"] = DeleteSomeonesReveiew;
+                return RedirectToAction("Index", "Gym");
+            }
 
             return RedirectToAction("Index","Gym");
         }

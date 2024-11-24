@@ -22,5 +22,7 @@ namespace GymHub.Services.Data.Interfaces
         Task<bool> UpdateReviewAsync(EditReviewModel model);
 
         Task<DeleteReveiwViewModel?> GetDeleteModelAsync(Guid reviewId);
+
+        Task<bool>UserDeleteReview(Guid userId,Guid reviewId);
     }
 }

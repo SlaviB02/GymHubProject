@@ -152,5 +152,22 @@ namespace GymHub.Services.Data
 
             return model;
         }
+
+        public async Task<bool> UserDeleteReview(Guid userId, Guid reviewId)
+        {
+            Review review = await context.FirstOrDefaultAsync(r => r.Id == reviewId && r.IsDeleted == false);
+
+
+            if (review == null ||review.UserId!=userId)
+            {
+                return false;
+            }
+
+            review.IsDeleted = true;
+
+            await context.UpdateAsync(review);
+
+            return true;
+        }
     }
 }

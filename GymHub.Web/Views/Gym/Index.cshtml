@@ -6,6 +6,17 @@
 
 <h2 class="text-center">@ViewBag.Title</h2>
 
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>@TempData["Message"]</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
