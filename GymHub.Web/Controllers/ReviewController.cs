@@ -63,6 +63,19 @@ namespace GymHub.Web.Controllers
 
             return View(list);
         }
-       
+        public async Task<IActionResult> Delete(string id)
+        {
+            bool isValidGuid = Guid.TryParse(id, out Guid reviewId);
+            if (!isValidGuid)
+            {
+                return BadRequest();
+            }
+
+            await service.DeleteReviewAsync(reviewId);
+
+
+            return RedirectToAction("Index","Gym");
+        }
+
     }
 }

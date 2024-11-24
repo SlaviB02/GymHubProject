@@ -15,7 +15,7 @@
                 <p class="fw-bold"><span class="fw-bold">By: </span>@e.UserName</p>
                 @if (User?.Identity?.Name == @e.Name)
                 {
-                    <a asp-controller="Review" asp-action="Delete" asp-route-id="@e.ReviewId" class="btn btn-warning btn-dark-text btn-rounded fw-bold">Delete</a>
+                    <a asp-area="" asp-controller="Review" asp-action="Delete" asp-route-id="@e.ReviewId" class="btn btn-warning btn-dark-text btn-rounded fw-bold">Delete</a>
                 }
             </div>
         </div>
