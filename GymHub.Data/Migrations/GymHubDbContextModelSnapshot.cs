@@ -139,7 +139,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Classes");
+                    b.ToTable("Classes", (string)null);
 
                     b.HasData(
                         new
@@ -338,7 +338,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ClassesUsers");
+                    b.ToTable("ClassesUsers", (string)null);
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.Gym", b =>
@@ -383,7 +383,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Gyms");
+                    b.ToTable("Gyms", (string)null);
 
                     b.HasData(
                         new
@@ -489,7 +489,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Memberships");
+                    b.ToTable("Memberships", (string)null);
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.Review", b =>
@@ -531,7 +531,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("GymHub.Data.Models.Trainer", b =>
@@ -580,7 +580,7 @@ namespace GymHub.Data.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Trainers");
+                    b.ToTable("Trainers", (string)null);
 
                     b.HasData(
                         new

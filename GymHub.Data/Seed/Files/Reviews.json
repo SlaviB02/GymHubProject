@@ -1,0 +1,170 @@
+[
+  {
+    "Id": "f1a93c78-d9a4-4c11-897a-4a7349386a90",
+    "Title": "Great Gym Atmosphere",
+    "MainBody": "This gym has an excellent atmosphere and friendly staff. Highly recommend it.",
+    "Rating": 9.8,
+    "GymId": "d5f4b10a-42a1-4f63-8c7f-1a7f9bc8e4e0"
+  },
+  {
+    "Id": "c5f64d62-1a7e-4932-bd4a-065d1b7ef1d7",
+    "Title": "Clean and Spacious",
+    "MainBody": "The gym is always clean, and there's plenty of space for workouts, even during peak hours.",
+    "Rating": 9.0,
+    "GymId": "b21d17f5-9c92-4a72-8b77-33c4f08d8df8"
+  },
+  {
+    "Id": "a2b24f91-00a2-4c7d-b18d-4d92e5f7b897",
+    "Title": "Needs New Equipment",
+    "MainBody": "While the gym is decent, some of the equipment is outdated and needs replacing.",
+    "Rating": 6.5,
+    "GymId": "f9e5b2ab-7edc-4d33-888f-0ab0c9b9fd0b"
+  },
+  {
+    "Id": "9ef85d74-f9e2-4629-9e9f-c8a957f68c34",
+    "Title": "Excellent Personal Trainers",
+    "MainBody": "The personal trainers here are incredibly knowledgeable and helpful with fitness goals.",
+    "Rating": 9.6,
+    "GymId": "a3b2c1d4-e8f9-4a02-9b3c-5d2e9f7e1c2f"
+  },
+  {
+    "Id": "d3c19a78-12b3-4e6f-9ae7-3a8f45bf7d98",
+    "Title": "Overcrowded at Times",
+    "MainBody": "The gym has great equipment, but it gets overcrowded during peak hours, making it hard to work out.",
+    "Rating": 7.2,
+    "GymId": "b7c3d8e2-f5a4-4b23-910f-6c9d2e3a7f4e"
+  },
+  {
+    "Id": "ed51b30b-8414-4f73-91ed-3f76b8c124f2",
+    "Title": "Unhelpful Staff",
+    "MainBody": "The equipment is good, but the staff were unhelpful and unfriendly during my visit.",
+    "Rating": 5.4,
+    "GymId": "c9d1e7f6-b4a3-4c87-92d2-8e1c4f9b2d7e"
+  },
+  {
+    "Id": "39c20d5b-8af4-43c9-88ae-69b2597c6c82",
+    "Title": "Great for Beginners",
+    "MainBody": "The classes here are excellent for beginners, with supportive instructors.",
+    "Rating": 8.9,
+    "GymId": "d5f4b10a-42a1-4f63-8c7f-1a7f9bc8e4e0"
+  },
+  {
+    "Id": "42d1a75c-6d5c-4b14-8ed6-fb26e5e292a7",
+    "Title": "Too Expensive",
+    "MainBody": "The gym is great, but the membership fees are too high for the value offered.",
+    "Rating": 6.3,
+    "GymId": "b21d17f5-9c92-4a72-8b77-33c4f08d8df8"
+  },
+  {
+    "Id": "31e50745-94a1-435f-940b-24e034d7328f",
+    "Title": "State-of-the-Art Equipment",
+    "MainBody": "The gym features the latest equipment and machines for all workout types.",
+    "Rating": 9.4,
+    "GymId": "f9e5b2ab-7edc-4d33-888f-0ab0c9b9fd0b"
+  },
+  {
+    "Id": "33c14f96-6722-491c-a1c7-6b67a0b44511",
+    "Title": "Parking Issues",
+    "MainBody": "Great facilities, but parking is a nightmare during busy hours.",
+    "Rating": 7.1,
+    "GymId": "a3b2c1d4-e8f9-4a02-9b3c-5d2e9f7e1c2f"
+  },
+  {
+    "Id": "6d4ad5e9-1b55-455f-ae16-4af70780f5de",
+    "Title": "Perfect for Weightlifting",
+    "MainBody": "The gym has an excellent variety of weights and machines for strength training.",
+    "Rating": 9.2,
+    "GymId": "b7c3d8e2-f5a4-4b23-910f-6c9d2e3a7f4e"
+  },
+  {
+    "Id": "1d19a7a2-f4ec-4c0c-91e4-57a85c90c364",
+    "Title": "Lack of Classes",
+    "MainBody": "While the equipment is good, the gym lacks enough group fitness classes.",
+    "Rating": 6.7,
+    "GymId": "c9d1e7f6-b4a3-4c87-92d2-8e1c4f9b2d7e"
+  },
+  {
+    "Id": "fab2c7c8-0c14-4a4f-b72a-854c824d5b5e",
+    "Title": "Friendly Community",
+    "MainBody": "I love the sense of community at this gym. Everyone is supportive and encouraging.",
+    "Rating": 9.5,
+    "GymId": "d5f4b10a-42a1-4f63-8c7f-1a7f9bc8e4e0"
+  },
+  {
+    "Id": "a5c4e3e4-b43d-4b68-b2f3-d8bfe00c2b6f",
+    "Title": "Great Kids Programs",
+    "MainBody": "The gym offers fantastic programs for kids, including swimming and sports.",
+    "Rating": 8.8,
+    "GymId": "b21d17f5-9c92-4a72-8b77-33c4f08d8df8"
+  },
+  {
+    "Id": "8f5b16fc-2dc7-4d8c-b3c7-8f0b3036d9d8",
+    "Title": "Overcrowded Gym",
+    "MainBody": "The gym is always overcrowded, and it’s hard to find a machine during peak times.",
+    "Rating": 5.9,
+    "GymId": "f9e5b2ab-7edc-4d33-888f-0ab0c9b9fd0b"
+  },
+  {
+    "Id": "b62f830e-8d0b-41e4-856b-5936d2e3df2d",
+    "Title": "Convenient Location",
+    "MainBody": "The gym is conveniently located, making it easy to visit after work.",
+    "Rating": 8.3,
+    "GymId": "a3b2c1d4-e8f9-4a02-9b3c-5d2e9f7e1c2f"
+  },
+  {
+    "Id": "eb2d35a9-f9c8-4a02-9369-4d8287d1c5d2",
+    "Title": "Outdated Showers",
+    "MainBody": "The workout area is nice, but the showers are outdated and need renovation.",
+    "Rating": 6.0,
+    "GymId": "b7c3d8e2-f5a4-4b23-910f-6c9d2e3a7f4e"
+  },
+  {
+    "Id": "f3a2d871-7237-4a14-a946-c23c78e5f3a5",
+    "Title": "Flexible Hours",
+    "MainBody": "The gym is open 24/7, which is perfect for my busy schedule.",
+    "Rating": 9.7,
+    "GymId": "c9d1e7f6-b4a3-4c87-92d2-8e1c4f9b2d7e"
+  },
+  {
+    "Id": "bb5bfa71-6c7c-4f3b-8b36-25f371a7d9f3",
+    "Title": "Amazing Yoga Classes",
+    "MainBody": "The yoga classes here are top-notch with experienced instructors.",
+    "Rating": 9.0,
+    "GymId": "d5f4b10a-42a1-4f63-8c7f-1a7f9bc8e4e0"
+  },
+  {
+    "Id": "2c5e64b0-bbaf-49cd-9d5c-42d91f548a6c",
+    "Title": "Good Value",
+    "MainBody": "The gym offers a good balance of price and quality with excellent amenities.",
+    "Rating": 8.9,
+    "GymId": "b21d17f5-9c92-4a72-8b77-33c4f08d8df8"
+  },
+  {
+    "Id": "7e46b09e-a8bf-409b-99c9-9dc7c2910df3",
+    "Title": "Bad Music Selection",
+    "MainBody": "The gym plays loud, repetitive music, which is distracting during workouts.",
+    "Rating": 5.7,
+    "GymId": "f9e5b2ab-7edc-4d33-888f-0ab0c9b9fd0b"
+  },
+  {
+    "Id": "c862a7f4-e91a-44a5-8e3c-f2bfc015e6b7",
+    "Title": "Wide Range of Equipment",
+    "MainBody": "There’s a great range of equipment for both cardio and strength training.",
+    "Rating": 9.3,
+    "GymId": "a3b2c1d4-e8f9-4a02-9b3c-5d2e9f7e1c2f"
+  },
+  {
+    "Id": "48d5e817-5b36-429b-832e-dc1fb6f7f3c6",
+    "Title": "Helpful App",
+    "MainBody": "The gym's app makes booking classes and tracking progress super easy.",
+    "Rating": 8.6,
+    "GymId": "b7c3d8e2-f5a4-4b23-910f-6c9d2e3a7f4e"
+  },
+  {
+    "Id": "c2d8eb1e-f842-45fb-8231-0cf4f814d916",
+    "Title": "High Membership Cost",
+    "MainBody": "The facilities are great, but the membership cost is higher than expected.",
+    "Rating": 7.0,
+    "GymId": "c9d1e7f6-b4a3-4c87-92d2-8e1c4f9b2d7e"
+  }
+]

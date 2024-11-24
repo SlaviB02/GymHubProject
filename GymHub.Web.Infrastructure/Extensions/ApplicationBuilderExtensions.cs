@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using static GymHub.Common.ApplicationConstants;
 
 namespace GymHub.Web.Infrastructure.Extensions
@@ -33,7 +35,7 @@ namespace GymHub.Web.Infrastructure.Extensions
             
 
             CreateAdminUser(userManager);
-            CreateUsers(userManager);
+            CreateUsersAndReviews(userManager);
 
         }
 
@@ -75,7 +77,8 @@ namespace GymHub.Web.Infrastructure.Extensions
           
 
         }
-        private static void CreateUsers(UserManager<ApplicationUser> userManager)
+
+        private static void CreateUsersAndReviews(UserManager<ApplicationUser> userManager)
         {
 
             var users = new[]
@@ -125,7 +128,20 @@ namespace GymHub.Web.Infrastructure.Extensions
             FirstName = "Bob",
             LastName = "Johnson",
         },
+        new
+        {
+            Id = Guid.Parse("147c7a8d-7b36-4702-8a9c-59b03dd11bd7"),
+            Email = "user6@gymhub.com",
+            UserName = "user6@gymhub.com",
+            Password = "user123",
+            FirstName = "Vlad",
+            LastName = "James",
+        }
     };
+
+            string inputJson = File.ReadAllText("../GymHub.Data/Seed/Files/Reviews.json");
+            List<Review> reviews = JsonConvert.DeserializeObject<List<Review>>(inputJson)!;
+            int reviewIndex = 0;
 
             foreach (var userInfo in users)
             {
@@ -142,16 +158,28 @@ namespace GymHub.Web.Infrastructure.Extensions
                         FirstName = userInfo.FirstName,
                         LastName = userInfo.LastName
                     };
+                    if (user.Reviews.Count == 0)
+                    {
+                        for (int i = reviewIndex; i < reviewIndex + 4; i++)
+                        {
+                            user.Reviews.Add(reviews[i]);
+                        }
+                        reviewIndex += 4;
+                    }
 
                     var createUserResult = userManager.CreateAsync(user, userInfo.Password).GetAwaiter().GetResult();
                     if (!createUserResult.Succeeded)
                     {
                         throw new Exception($"Failed to create admin user: {user.Email}");
                     }
+
+   
                 }
             }
 
         }
+
+       
 
 
     }

@@ -21,5 +21,7 @@ namespace GymHub.Data.Models
         [StringLength(LastNameMaxLength)]
         [Comment("The Last name of the user")]
         public string LastName { get; set; } = null!;
+
+        public ICollection<Review> Reviews { get; set; }=new HashSet<Review>();
     }
 }
