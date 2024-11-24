@@ -47,14 +47,18 @@ namespace GymHub.Services.Data
 
         public async Task<bool> DeleteClassAsync(Guid classId)
         {
-            Class gymClass = await ClassContext.FirstOrDefaultAsync(c=>c.Id == classId && c.isDeleted== false);
+            Class? gymClass = await ClassContext
+                .GetAllAttached()
+                .Where(c => c.Id == classId && c.isDeleted == false)
+                .Include(c=>c.ClassesUsers)
+                .FirstOrDefaultAsync();
 
 
-            if (gymClass == null)
+            if (gymClass == null || gymClass.ClassesUsers.Any())
             {
                 return false;
             }
-
+            
             gymClass.isDeleted = true;
 
             await ClassContext.UpdateAsync(gymClass);
@@ -134,34 +138,44 @@ namespace GymHub.Services.Data
             return list;
         }
 
-        public async Task<DeleteClassViewModel> GetDeleteModelAsync(Guid classId)
+        public async Task<DeleteClassViewModel?> GetDeleteModelAsync(Guid classId)
         {
             var gymClass=await ClassContext.FirstOrDefaultAsync(c=>c.Id==classId && c.isDeleted==false);
 
-          
+            DeleteClassViewModel? model = null;
 
-            DeleteClassViewModel model = new DeleteClassViewModel()
+            if (gymClass != null)
             {
-                Name = gymClass.Name,
-                Id = gymClass.Id,
-            };
+
+                model = new DeleteClassViewModel()
+                {
+                    Name = gymClass.Name,
+                    Id = gymClass.Id,
+                };
+            }
 
             return model;
         }
 
-        public async Task<EditClassFormModel> GetEditModelAsync(Guid classId)
+        public async Task<EditClassFormModel?> GetEditModelAsync(Guid classId)
         {
             var gymClass = await ClassContext.FirstOrDefaultAsync(c => c.isDeleted == false && c.Id == classId);
 
-            EditClassFormModel model = new EditClassFormModel()
+            EditClassFormModel? model = null;
+
+            if (gymClass != null)
             {
-                Name= gymClass.Name,
-                Duration = gymClass.Duration,
-                DateAndTime=gymClass.StartTimeAndDate.ToString(DateAndTimeFormat),
-                Instructor = gymClass.Instructor,
-                Id= classId,
-                GymId=gymClass.GymId
-            };
+
+                model = new EditClassFormModel()
+                {
+                    Name = gymClass.Name,
+                    Duration = gymClass.Duration,
+                    DateAndTime = gymClass.StartTimeAndDate.ToString(DateAndTimeFormat),
+                    Instructor = gymClass.Instructor,
+                    Id = classId,
+                    GymId = gymClass.GymId
+                };
+            }
 
 
 

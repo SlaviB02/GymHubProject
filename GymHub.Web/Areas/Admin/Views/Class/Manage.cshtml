@@ -10,6 +10,15 @@
     <a asp-action="Add" class="btn btn-success">Add Class</a>
 </div>
 
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>@TempData["Message"]</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <table class="table table-striped">
     <thead>
         <tr>

@@ -11,7 +11,7 @@ namespace GymHub.Services.Data.Interfaces
 
         Task<IEnumerable<AllClassViewModel>> GetAllClassesAsync();
 
-        Task<EditClassFormModel> GetEditModelAsync(Guid classId);
+        Task<EditClassFormModel?> GetEditModelAsync(Guid classId);
 
         Task<bool> EditClassAsync(EditClassFormModel model);
 
@@ -23,7 +23,7 @@ namespace GymHub.Services.Data.Interfaces
 
         Task<bool>UnsignUserFromClassAsync(Guid userId, Guid classId);
 
-        Task<DeleteClassViewModel>GetDeleteModelAsync(Guid classId);
+        Task<DeleteClassViewModel?>GetDeleteModelAsync(Guid classId);
 
     }
 }

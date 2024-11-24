@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Runtime.Serialization;
 using static GymHub.Common.ApplicationConstants;
+using static GymHub.Common.ErrorMessages;
 
 namespace GymHub.Web.Areas.Admin.Controllers
 {
@@ -70,6 +71,7 @@ namespace GymHub.Web.Areas.Admin.Controllers
 
             if (model == null)
             {
+                TempData["Message"] = InvalidIdMessage;
                 return RedirectToAction("Manage");
             }
 
@@ -108,6 +110,7 @@ namespace GymHub.Web.Areas.Admin.Controllers
 
             if (model == null)
             {
+                TempData["Message"] = InvalidIdMessage;
                 return RedirectToAction("Manage");
             }
 
@@ -127,6 +130,7 @@ namespace GymHub.Web.Areas.Admin.Controllers
 
             if (res == false)
             {
+                TempData["Message"]=UsersAreSignedForClass;
                 return RedirectToAction("Manage");
             }
 
