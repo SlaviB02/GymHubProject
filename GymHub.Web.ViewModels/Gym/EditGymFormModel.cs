@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using static GymHub.Common.EntityValidation.Gym;
-
+using static GymHub.Common.DataValidationMessages.Gym;
 namespace GymHub.Web.ViewModels.Gym
 {
     public class EditGymFormModel
@@ -14,25 +9,22 @@ namespace GymHub.Web.ViewModels.Gym
         public Guid Id { get; set; }
         
         [Required]
-        [MinLength(NameMinLength)]
-        [MaxLength(NameMaxLength)]
+        [StringLength(NameMaxLength, ErrorMessage = NameLengthMessage, MinimumLength = NameMinLength)]
         public string Name { get; set; } = null!;
         [Required]
-        [MinLength(DescriptionMinLength)]
-        [MaxLength(DescriptionMaxLength)]
+        [StringLength(DescriptionMaxLength, ErrorMessage = DescriptionLengthMessage, MinimumLength = DescriptionMinLength)]
         public string Description { get; set; } = null!;
 
         public string? ImageUrl { get; set; }
         [Required]
-        [MinLength(AddressMinLength)]
-        [MaxLength(AddressMaxLength)]
+        [StringLength(AddressMaxLength, ErrorMessage = AddressLengthMessage, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
 
         [Required]
-        [Range(HourMinRange, HourMaxRange)]
+        [Range(HourMinRange, HourMaxRange, ErrorMessage = HourRangeMessage)]
         public int OpeningHour { get; set; }
         [Required]
-        [Range(HourMinRange, HourMaxRange)]
+        [Range(HourMinRange, HourMaxRange, ErrorMessage = HourRangeMessage)]
         public int ClosingHour { get; set; }
     }
 }

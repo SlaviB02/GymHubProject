@@ -1,24 +1,23 @@
 ﻿using GymHub.Web.ViewModels.Gym;
 using System.ComponentModel.DataAnnotations;
 using static GymHub.Common.EntityValidation.GymClass;
+using static GymHub.Common.DataValidationMessages.GymClass;
 
 namespace GymHub.Web.ViewModels.Class
 {
     public class AddClassViewModel
     {
         [Required]
-        [MinLength(NameMinLength)]
-        [MaxLength(NameMaxLength)]
+        [StringLength(NameMaxLength,ErrorMessage =NameLengthMessage,MinimumLength =NameMinLength)]
         public string Name { get; set; } = null!;
         [Required]
         public string DateAndTime { get; set; } = null!;
         [Required]
-        [Range(MinDuration,MaxDuration)]
+        [Range(MinDuration,MaxDuration,ErrorMessage =DurationRangeMessage)]
         public int Duration {  get; set; }
 
         [Required]
-        [MinLength(InstructorMinLength)]
-        [MaxLength(InstructorMaxLength)]
+        [StringLength(InstructorMaxLength, ErrorMessage = InstructorNameLengthMessage, MinimumLength = InstructorMinLength)]
         public string Instructor { get; set; } = null!;
 
         public IEnumerable<GymNamesViewModel>? Gyms { get; set; }
