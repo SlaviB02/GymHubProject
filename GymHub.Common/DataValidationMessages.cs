@@ -17,5 +17,21 @@ namespace GymHub.Common
             public const string AddressLengthMessage = "Gym {0} should be between {2} and {1} characters!";
             public const string HourRangeMessage = "{0} should be between {1} and {2}";
         }
+        public static class Membership
+        {
+            public const string PhoneLengthMessage = "Membership {0} should be between {2} and {1} characters!";
+        }
+        public static class Review
+        {
+            public const string TitleLengthMessage = "Review {0} should be between {2} and {1} characters!";
+            public const string BodyLengthMessage = "Review {0} should be between {2} and {1} characters!";
+            public const string RatingRangeMessage = "{0} should be between {1} and {2}";
+        }
+        public static class Trainer
+        {
+            public const string NameLengthMessage = "Trainer {0} should be between {2} and {1} characters!";
+            public const string PhoneLengthMessage = "Trainer {0} should be between {2} and {1} characters!";
+            public const string EmailLengthMessage = "{0} should be between {2} and {1} characters!";
+        }
     }
 }

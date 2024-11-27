@@ -1,29 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using static GymHub.Common.EntityValidation.Review;
+using static GymHub.Common.DataValidationMessages.Review;
 
 namespace GymHub.Web.ViewModels.Review
 {
     public class AddReviewInputModel
     {
         [Required]
-        [MinLength(TitleMinLength)]
-        [MaxLength(TitleMaxLength)]
+        [StringLength(TitleMaxLength,ErrorMessage =TitleLengthMessage,MinimumLength =TitleMinLength)]
         public string Title { get; set; } = null!;
 
         [Required]
-        [MinLength(MainBodyMinLength)]
-        [MaxLength(MainBodyMaxLength)]
+        [StringLength(MainBodyMaxLength, ErrorMessage = BodyLengthMessage, MinimumLength = MainBodyMinLength)]
 
         public string MainBody { get; set; } = null!;
 
         [Required]
-        [Range(RatingMin, RatingMax)]
+        [Range(RatingMin, RatingMax,ErrorMessage =RatingRangeMessage)]
         public double Rating {  get; set; }
     }
 }

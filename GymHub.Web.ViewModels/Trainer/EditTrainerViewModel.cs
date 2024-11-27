@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using static GymHub.Common.EntityValidation.Trainer;
+using static GymHub.Common.DataValidationMessages.Trainer;
 
 namespace GymHub.Web.ViewModels.Trainer
 {
@@ -7,20 +8,16 @@ namespace GymHub.Web.ViewModels.Trainer
     {
 
         [Required]
-        [MinLength(FirstNameMinLength)]
-        [MaxLength(FirstNameMaxLength)]
+        [StringLength(FirstNameMaxLength, ErrorMessage = NameLengthMessage, MinimumLength = FirstNameMinLength)]
         public string FirstName { get; set; } = null!;
         [Required]
-        [MinLength(LastNameMinLength)]
-        [MaxLength(LastNameMaxLength)]
+        [StringLength(LastNameMaxLength, ErrorMessage = NameLengthMessage, MinimumLength = LastNameMinLength)]
         public string LastName { get; set; } = null!;
         [Required]
-        [MinLength(PhoneMinLength)]
-        [MaxLength(PhoneMaxLength)]
+        [StringLength(PhoneMaxLength, ErrorMessage = PhoneLengthMessage, MinimumLength = PhoneMinLength)]
         public string PhoneNumber { get; set; } = null!;
         [Required]
-        [MinLength(EmailMinLength)]
-        [MaxLength(EmailMaxLength)]
+        [StringLength(EmailMaxLength, ErrorMessage = EmailLengthMessage, MinimumLength = EmailMinLength)]
         public string Email { get; set; } = null!;
 
         public string? ImageUrl { get; set; }

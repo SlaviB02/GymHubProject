@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
+﻿using System.ComponentModel.DataAnnotations;
 using static GymHub.Common.EntityValidation.Review;
+using static GymHub.Common.DataValidationMessages.Review;
 namespace GymHub.Web.ViewModels.Review
 {
     public class EditReviewModel
     {
         [Required]
-        [MinLength(TitleMinLength)]
-        [MaxLength(TitleMaxLength)]
+        [StringLength(TitleMaxLength, ErrorMessage = TitleLengthMessage, MinimumLength = TitleMinLength)]
         public string Title { get; set; } = null!;
 
 
         [Required]
-        [MinLength(MainBodyMinLength)]
-        [MaxLength(MainBodyMaxLength)]
+        [StringLength(MainBodyMaxLength, ErrorMessage = BodyLengthMessage, MinimumLength = MainBodyMinLength)]
         public string Body { get; set; } = null!;
 
         [Required]

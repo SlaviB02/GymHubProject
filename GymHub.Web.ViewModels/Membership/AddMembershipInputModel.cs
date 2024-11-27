@@ -1,7 +1,7 @@
-﻿using GymHub.Data.Models.Enums;
-using GymHub.Web.ViewModels.Gym;
+﻿using GymHub.Web.ViewModels.Gym;
 using System.ComponentModel.DataAnnotations;
 using static GymHub.Common.EntityValidation.Membership;
+using static GymHub.Common.DataValidationMessages.Membership;
 
 namespace GymHub.Web.ViewModels.Membership
 {
@@ -15,8 +15,7 @@ namespace GymHub.Web.ViewModels.Membership
         public string StartDate { get; set; } = null!;
 
         [Required]
-        [MinLength(PhoneMinLength)]
-        [MaxLength(PhoneMaxLength)]
+        [StringLength(PhoneMaxLength,ErrorMessage =PhoneLengthMessage,MinimumLength =PhoneMinLength)]
 
         public string PhoneNumber { set; get; } = null!;
 
