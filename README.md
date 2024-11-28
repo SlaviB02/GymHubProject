@@ -6,9 +6,9 @@ regular user: **user1@gymhub.com** pass: **user123**
 admin user: **admin@email.bg** pass: **admin123** 
 
 
-*GymHub makes it simple to find the best gym in your town for you. You can look through the details such as: trainers,reviews,classes.
-*You can make memberships for your favourite gyms or just sign up for a class.
-*Admin user can add, delete, edit: gyms, trainers, classes, reviews.
+* GymHub makes it simple to find the best gym in your town for you. You can look through the details such as: trainers,reviews,classes.
+* You can make memberships for your favourite gyms or just sign up for a class.
+* Admin user can add, delete, edit: gyms, trainers, classes, reviews.
 
 
 ## Screen Shots:
