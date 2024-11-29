@@ -14,7 +14,7 @@ namespace GymHub.Web.ViewModels.Trainer
         [StringLength(LastNameMaxLength, ErrorMessage = NameLengthMessage, MinimumLength = LastNameMinLength)]
         public string LastName { get; set; } = null!;
         [Required]
-        [StringLength(PhoneMaxLength, ErrorMessage = PhoneLengthMessage, MinimumLength = PhoneMinLength)]
+        [RegularExpression(PhoneRegex,ErrorMessage = PhoneRegexMessage)]
         public string PhoneNumber { get; set; } = null!;
         [Required]
         [StringLength(EmailMaxLength, ErrorMessage = EmailLengthMessage, MinimumLength = EmailMinLength)]

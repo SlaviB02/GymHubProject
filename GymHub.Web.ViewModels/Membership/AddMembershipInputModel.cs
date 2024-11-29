@@ -15,7 +15,7 @@ namespace GymHub.Web.ViewModels.Membership
         public string StartDate { get; set; } = null!;
 
         [Required]
-        [StringLength(PhoneMaxLength,ErrorMessage =PhoneLengthMessage,MinimumLength =PhoneMinLength)]
+        [RegularExpression(PhoneRegex,ErrorMessage =PhoneRegexMessage)]
 
         public string PhoneNumber { set; get; } = null!;
 

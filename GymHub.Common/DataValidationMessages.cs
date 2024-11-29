@@ -19,7 +19,7 @@ namespace GymHub.Common
         }
         public static class Membership
         {
-            public const string PhoneLengthMessage = "Membership {0} should be between {2} and {1} characters!";
+            public const string PhoneRegexMessage= "Membership {0} should be in DDD-DDD-DDDD format!";
         }
         public static class Review
         {
@@ -30,7 +30,7 @@ namespace GymHub.Common
         public static class Trainer
         {
             public const string NameLengthMessage = "Trainer {0} should be between {2} and {1} characters!";
-            public const string PhoneLengthMessage = "Trainer {0} should be between {2} and {1} characters!";
+            public const string PhoneRegexMessage = "Trainer {0} should be in format: + followed by 11 digits!";
             public const string EmailLengthMessage = "{0} should be between {2} and {1} characters!";
         }
     }

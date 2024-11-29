@@ -12,6 +12,7 @@
 
             public const int PhoneMinLength = 10;
             public const int PhoneMaxLength = 15;
+            public const string PhoneRegex = "\\+\\d{11}";
 
             public const int EmailMinLength = 10;
             public const int EmailMaxLength = 50;
@@ -44,6 +45,7 @@
 
             public const int PhoneMinLength = 10;
             public const int PhoneMaxLength = 15;
+            public const string PhoneRegex = "\\d{3}-\\d{3}-\\d{4}";
         }
 
         public static class Gym
