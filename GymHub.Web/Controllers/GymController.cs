@@ -1,7 +1,6 @@
-﻿using GymHub.Services.Data;
-using GymHub.Services.Data.Interfaces;
+﻿using GymHub.Services.Data.Interfaces;
+using GymHub.Web.Models;
 using GymHub.Web.ViewModels.Gym;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymHub.Web.Controllers
@@ -15,25 +14,31 @@ namespace GymHub.Web.Controllers
         {
             service= _service;
         }
-        public async Task<IActionResult> Index(string searchText)
+        public async Task<IActionResult> Index(string searchText,int?pageNumber)
         {
 
-            ViewData["SearchText"]=searchText;
+            
 
             IEnumerable<AllGymViewModel> list;
 
             if(!String.IsNullOrEmpty(searchText))
             {
                 list=await service.GetAllGymsBySearchAsync(searchText);
+                pageNumber = 1;
             }
             else
             {
                 list = await service.GetAllGymsAsync();
-
             }
+
+            ViewData["SearchText"] = searchText;
+
+            int pageSize = 4;
+            int page = (pageNumber ?? 1);
+            var res = PaginatedList<AllGymViewModel>.Create(list, page, pageSize);
           
 
-            return View(list);
+            return View(res);
         }
         public async Task<IActionResult>Details(string id)
         {

@@ -1,4 +1,6 @@
-﻿ @model ICollection<AllGymViewModel>
+﻿@using GymHub.Web.Models
+
+@model PaginatedList<AllGymViewModel>
 
 @{
     ViewBag.Title = "Gyms";
@@ -64,6 +66,7 @@
     }
 </div>
 
+<partial name="_Pagination" model="Model"/>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
