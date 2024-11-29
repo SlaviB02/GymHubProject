@@ -14,10 +14,10 @@ admin user: **admin@email.bg** pass: **admin123**
 ## Screen Shots:
 
 ### Logged-out user gym index page:
-![image](https://github.com/user-attachments/assets/fb57de61-cca7-40ac-a2e2-68b9cbcfbbaf)
+![image](https://github.com/user-attachments/assets/8c82131d-0626-4f73-87f2-216abe1b891c)
 
 ### Logged user gym index page:
-![image](https://github.com/user-attachments/assets/e661016d-fc27-4bf5-a826-60c5ae25f39c)
+![image](https://github.com/user-attachments/assets/8f2cce2d-39b1-4d28-b994-3afa9e8444ea)
 
 ### Gym details page:
 ![image](https://github.com/user-attachments/assets/3e79852a-edfb-4e3e-bdfc-a1e6e41d2330)
