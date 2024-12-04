@@ -16,6 +16,7 @@ namespace GymHub.Common
         public static string UsersAreSignedForClass = "You can't delete this class.Some users may be signed for this class!";
         public static string GymHasClassesOrMemberships = "You can't delete this gym.It may have some classes or memberships!";
         public static string DeleteSomeonesReveiew = "You can't delete other's people reviews!";
+        public static string InvalidGym = "There is no gym with this id!";
 
     }
 }

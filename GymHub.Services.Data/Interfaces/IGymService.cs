@@ -13,7 +13,7 @@ namespace GymHub.Services.Data.Interfaces
 
         Task<IEnumerable<AllGymViewModel>> GetAllGymsBySearchAsync(string text);
 
-        Task<GymDetailsViewModel> GetDetailsGymAsync(Guid id);
+        Task<GymDetailsViewModel?> GetDetailsGymAsync(Guid id);
 
         Task<IEnumerable<GymNamesViewModel>> GetGymNamesAsync();
 

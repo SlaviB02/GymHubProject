@@ -124,7 +124,7 @@ namespace GymHub.Services.Data
             return model;
         }
 
-        public async Task<GymDetailsViewModel> GetDetailsGymAsync(Guid id)
+        public async Task<GymDetailsViewModel?> GetDetailsGymAsync(Guid id)
         {
             GymDetailsViewModel? model = null;
 
@@ -148,7 +148,7 @@ namespace GymHub.Services.Data
 
 
 
-            return model!;
+            return model;
 
         }
 
@@ -172,7 +172,7 @@ namespace GymHub.Services.Data
                 };
 
             }
-            return model!;
+            return model;
         }
 
         public async Task<IEnumerable<GymNamesViewModel>> GetGymNamesAsync()

@@ -3,6 +3,8 @@ using GymHub.Web.Models;
 using GymHub.Web.ViewModels.Gym;
 using Microsoft.AspNetCore.Mvc;
 
+using static GymHub.Common.ErrorMessages;
+
 namespace GymHub.Web.Controllers
 {
   
@@ -51,6 +53,7 @@ namespace GymHub.Web.Controllers
 
             if(model==null)
             {
+                TempData["Message"] = InvalidGym;
                 return RedirectToAction("Index");
             }
 
