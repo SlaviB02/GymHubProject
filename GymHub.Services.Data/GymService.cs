@@ -89,7 +89,7 @@ namespace GymHub.Services.Data
         {
             var gyms = await context
                .GetAllAttached()
-               .Where(g => !g.IsDeleted && g.Name.Contains(text))
+               .Where(g => !g.IsDeleted && g.Name.ToLower().Contains(text.ToLower()))
                .Select(e => new AllGymViewModel()
                {
                    Name = e.Name,
