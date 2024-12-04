@@ -24,7 +24,6 @@ namespace GymHub.Web.Controllers
             if(!String.IsNullOrEmpty(searchText))
             {
                 list=await service.GetAllGymsBySearchAsync(searchText);
-                pageNumber = 1;
             }
             else
             {
