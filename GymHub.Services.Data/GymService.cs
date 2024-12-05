@@ -66,12 +66,12 @@ namespace GymHub.Services.Data
 
         }
 
-        public async Task<IEnumerable<AllGymViewModel>> GetAllGymsAsync()
+        public async Task<IEnumerable<AllGymViewModel>> GetAllGymsAsync(string? text)
         {
-            var gyms= await context
+            IQueryable<AllGymViewModel> query = context
                 .GetAllAttached()
                 .Where(g => !g.IsDeleted)
-                .Select(e=>new AllGymViewModel()
+                .Select(e => new AllGymViewModel()
                 {
                     Name = e.Name,
                     Address = e.Address,
@@ -79,8 +79,16 @@ namespace GymHub.Services.Data
                     OpeningHour = e.OpeningHour,
                     ClosingHour = e.ClosingHour,
                     Id = e.Id,
-                })
-                .ToListAsync();
+                });
+               
+
+            if (!String.IsNullOrEmpty(text))
+            {
+                query = query.Where(g => g.Name.ToLower().Contains(text.ToLower()));
+            }
+            
+            var gyms=await query.ToListAsync();
+
 
             return gyms;
         }

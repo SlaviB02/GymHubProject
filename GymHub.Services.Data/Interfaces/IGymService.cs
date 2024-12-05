@@ -9,9 +9,8 @@ namespace GymHub.Services.Data.Interfaces
 {
     public interface IGymService
     {
-        Task<IEnumerable<AllGymViewModel>>GetAllGymsAsync();
+        Task<IEnumerable<AllGymViewModel>>GetAllGymsAsync(string? text);
 
-        Task<IEnumerable<AllGymViewModel>> GetAllGymsBySearchAsync(string text);
 
         Task<GymDetailsViewModel?> GetDetailsGymAsync(Guid id);
 

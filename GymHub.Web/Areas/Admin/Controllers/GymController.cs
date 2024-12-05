@@ -16,7 +16,7 @@ namespace GymHub.Web.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Manage()
         {
-            var list = await service.GetAllGymsAsync();
+            var list = await service.GetAllGymsAsync("");
             return View(list);
         }
         [HttpGet]

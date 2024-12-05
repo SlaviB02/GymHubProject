@@ -19,18 +19,8 @@ namespace GymHub.Web.Controllers
         public async Task<IActionResult> Index(string searchText,int?pageNumber)
         {
 
-            
-
-            IEnumerable<AllGymViewModel> list;
-
-            if(!String.IsNullOrEmpty(searchText))
-            {
-                list=await service.GetAllGymsBySearchAsync(searchText);
-            }
-            else
-            {
-                list = await service.GetAllGymsAsync();
-            }
+            var list = await service.GetAllGymsAsync(searchText);
+           
 
             ViewData["SearchText"] = searchText;
 
