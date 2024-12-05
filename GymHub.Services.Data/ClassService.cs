@@ -24,10 +24,10 @@ namespace GymHub.Services.Data
 
         public async Task<bool> AddClassAsync(AddClassViewModel model)
         {
-            bool isReleaseDateValid = DateTime
+            bool isDateValid = DateTime
              .TryParseExact(model.DateAndTime, DateAndTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
                  out DateTime dateTime);
-            if (!isReleaseDateValid)
+            if (!isDateValid)
             {
                 return false;
             }

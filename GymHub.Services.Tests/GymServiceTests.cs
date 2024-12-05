@@ -12,7 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace GymHub.Services.Tests
 {
-    public class Tests
+    public class GymServiceTests
     {
 
         private IList<Gym> gymData;
