@@ -155,6 +155,7 @@ namespace GymHub.Services.Tests
             var res = await classService.EditClassAsync(model);
 
             Assert.That(res, Is.True);
+            this.classRepository.Verify(x=>x.UpdateAsync(It.IsAny<Class>()), Times.Once());
 
         }
 
