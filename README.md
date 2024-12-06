@@ -23,6 +23,7 @@ admin user: **admin@email.bg** pass: **admin123**
 ![image](https://github.com/user-attachments/assets/3e79852a-edfb-4e3e-bdfc-a1e6e41d2330)
 
 ### Admin user manage page:
-![image](https://github.com/user-attachments/assets/a3b3be2f-aba1-4715-b6ec-fb7596496eaf)
+![image](https://github.com/user-attachments/assets/de721c40-82cd-49c4-8257-ebbc1022f13e)
+
 
 
