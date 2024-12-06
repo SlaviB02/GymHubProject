@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AllReviewViewModel>
+﻿@model PaginatedList<AllReviewViewModel>
 
 @{
     ViewData["Title"] = "Manage Reviews";
@@ -41,3 +41,5 @@
         }
     </tbody>
 </table>
+
+<partial name="_Pagination" model="Model" />

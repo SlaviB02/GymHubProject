@@ -1,4 +1,6 @@
 ﻿using GymHub.Services.Data.Interfaces;
+using GymHub.Web.Models;
+using GymHub.Web.ViewModels.Class;
 using GymHub.Web.ViewModels.Trainer;
 using Microsoft.AspNetCore.Mvc;
 using static GymHub.Common.ErrorMessages;
@@ -15,11 +17,16 @@ namespace GymHub.Web.Areas.Admin.Controllers
             TrainerService = _TrainerService;
             GymService = gymService;
         }
-        public async Task<IActionResult> Manage()
+        public async Task<IActionResult> Manage(int? pageNumber )
         {
             var list = await TrainerService.GetAllTrainersAsync();
 
-            return View(list);
+            int pageSize = 5;
+            int page = (pageNumber ?? 1);
+            var res = PaginatedList<GymTrainerViewModel>.Create(list, page, pageSize);
+
+            return View(res);
+
         }
         [HttpGet]
         public async Task<IActionResult> Add()

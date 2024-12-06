@@ -1,4 +1,6 @@
 ﻿using GymHub.Services.Data.Interfaces;
+using GymHub.Web.Models;
+using GymHub.Web.ViewModels.Class;
 using GymHub.Web.ViewModels.Review;
 using Microsoft.AspNetCore.Mvc;
 using static GymHub.Common.ErrorMessages;
@@ -53,11 +55,16 @@ namespace GymHub.Web.Areas.Admin.Controllers
 
             return RedirectToAction("Manage");
         }
-        public async Task<IActionResult> Manage()
+        public async Task<IActionResult> Manage(int? pageNumber)
         {
             var list = await service.GetAllReviewsAsync();
 
-            return View(list);
+            int pageSize = 4;
+            int page = (pageNumber ?? 1);
+            var res = PaginatedList<AllReviewViewModel>.Create(list, page, pageSize);
+
+            return View(res);
+
         }
         [HttpGet]
         public async Task<IActionResult> Edit(string id)

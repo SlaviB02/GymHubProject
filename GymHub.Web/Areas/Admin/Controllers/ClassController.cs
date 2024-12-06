@@ -1,6 +1,8 @@
 ﻿
 using GymHub.Services.Data.Interfaces;
+using GymHub.Web.Models;
 using GymHub.Web.ViewModels.Class;
+using GymHub.Web.ViewModels.Gym;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Runtime.Serialization;
@@ -52,11 +54,15 @@ namespace GymHub.Web.Areas.Admin.Controllers
 
             return RedirectToAction("Manage");
         }
-        public async Task<IActionResult> Manage()
+        public async Task<IActionResult> Manage(int? pageNumber)
         {
             var list = await ClassService.GetAllClassesAsync();
 
-            return View(list);
+            int pageSize = 5;
+            int page = (pageNumber ?? 1);
+            var res = PaginatedList<AllClassViewModel>.Create(list, page, pageSize);
+
+            return View(res);
         }
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
