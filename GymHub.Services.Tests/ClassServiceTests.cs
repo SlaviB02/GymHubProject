@@ -3,14 +3,8 @@ using GymHub.Data.Repository.Interfaces;
 using GymHub.Services.Data.Interfaces;
 using GymHub.Services.Data;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MockQueryable;
 using GymHub.Web.ViewModels.Class;
-using System.Globalization;
 using System.Linq.Expressions;
 
 namespace GymHub.Services.Tests
@@ -22,7 +16,7 @@ namespace GymHub.Services.Tests
         private Mock<IRepository<Class>> classRepository;
 
         [SetUp]
-        public void Setup()
+        public void SetUp()
         {
             this.classUserRepository = new Mock<IRepository<ClassUser>>();
             this.classRepository = new Mock<IRepository<Class>>();
