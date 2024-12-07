@@ -10,8 +10,18 @@ admin user: **admin@email.bg** pass: **admin123**
 * You can make memberships for your favourite gyms or just sign up for a class.
 * Admin user can add, delete, edit: gyms, trainers, classes, reviews.
 
+## Technologies Used:
 
-## Screen Shots:
+- **ASP.NET Core 8**
+- **Entity Framework Core 8**
+- **NUnit**
+- **Moq**
+- **MockQueryable**
+- **Newtonsoft.Json**
+
+
+
+## ScreenShots:
 
 ### Logged-out user gym index page:
 ![image](https://github.com/user-attachments/assets/8c82131d-0626-4f73-87f2-216abe1b891c)
